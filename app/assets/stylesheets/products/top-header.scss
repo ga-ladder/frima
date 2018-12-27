@@ -1,0 +1,18 @@
+.top-header {
+  background-image:url("https://www.mercari.com/jp/assets/img/common/jp/top/top-banner-kusanagi-xmas.jpg");
+  color:black;
+  background-size: cover;
+  display: none;
+  height: 290px;
+}
+@media (min-width: 768px){
+  .top-header {
+      display:block;
+  }
+}
+@media (min-width: 1068px){
+  .top-header {
+      display:block;
+      height: 390px;
+  }
+}

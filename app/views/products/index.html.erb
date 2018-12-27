@@ -1,0 +1,16 @@
+<%= render "/layouts/module/navbar" %>
+
+<div class="top-header">
+</div>
+
+<div class="main">
+
+<% (0..3).each do |i| %>
+  <%= render "/products/index/pickup" %>
+<% end %>
+
+</div>
+
+<%= render "/products/index/camera" %>
+
+<%= render "/layouts/module/footer" %>

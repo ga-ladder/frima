@@ -1,0 +1,15 @@
+<h2 class="pickup">
+  ピックアップカテゴリー
+</h2>
+<h3 class="main__last">
+  <a href="#">レディース 新着アイテム</a>
+</h3>
+<div class="main__container">
+  <% (0..3).each do |i| %>
+    <%= render "/products/index/item" %>
+  <% end %>
+  <div class="main__next">
+  <a href="#">全ての商品を見る</a>
+  </div>
+</div>
+

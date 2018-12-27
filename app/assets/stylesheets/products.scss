@@ -1,0 +1,26 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.main{
+  background: #f5f5f5;
+  padding:40px 0;
+  .pickup{
+    text-align: center;
+  }
+  &__last{
+    text-align: center;
+    margin: 24px 8px;
+  }
+  &__container{
+    display: flex;
+    margin: 0 auto;
+    width: 940px;
+    flex-wrap: wrap;
+  }
+  &__next{
+    width: 100%;
+    padding:20px 0 30px;
+    text-align: right;
+  }
+}
