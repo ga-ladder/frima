@@ -13,6 +13,7 @@
 |derivery_source|integer|null:false|
 |derivery_way|integer|null:false|
 |derivery_day|integer|null:false|
+
 ** association **
 belongs_to :category
 belongs_to :brands
@@ -23,28 +24,36 @@ has_many :sales
 has_many_attached :images
 
 _中間テーブル_
+
 has_many :product_users
 has_many :users, through: :product_users
 
 
 _condition_
+
 0:新品
 1:目立った傷や汚れなし
 
 _delivery_way_
+
 0:本人負担
 1:送料込み（出品者負担）
 
 _derivery_day_
+
 0:1~2日以内に発送
+
 1:2~4日以内に発送
+
 2:4~7日以内に発送
 
 ### brand table
 | columnName | type | option|
 ----|----|----
 |name|string|デフォルトで入力しておく|
+
 ** association **
+
 has_many :products
 
 ### categories table
@@ -52,9 +61,12 @@ has_many :products
 ----|----|----
 |name|string|
 |parent_id|references|
+
 ** association **
-has_many :subcategories, class_name: "Category",
-                          foreign_key: "parent_id"
+
+has_many :subcategories,
+class_name: "Category",
+foreign_key: "parent_id"
 
 belongs_to :parent, class_name: "Category"
 
@@ -68,6 +80,7 @@ belongs_to :parent, class_name: "Category"
 |product_id|references|
 
 ** association **
+
 belongs_to :product
 
 
@@ -82,7 +95,9 @@ belongs_to :product
 |Trackable|string|devise|
 |providor|string|omniauth|
 |uid|string|omniauth|
+
 ** association **
+
 has_one :profile
 has_one :resident
 has_one :customer
@@ -94,7 +109,9 @@ has_many :products, through: :product_users
 | culumnName | type | option|
 ----|----|----
 |profile|text|
+
 ** association **
+
 belongs_to :user
 
 ### residents table
@@ -109,6 +126,7 @@ belongs_to :user
 |house_number|string|
 |building_name|string|
 |phone_number|integer|
+
 ** association **
 has_one :customer
 
@@ -130,6 +148,7 @@ belongs_to :user
 |product_id|references|index :true|
 
 ** association **
+
 belongs_to :user
 belongs_to :product
 
@@ -140,6 +159,7 @@ belongs_to :product
 |user_id|references|index :true|
 
 ** association **
+
 belongs_to :user
 belongs_to :product
 
