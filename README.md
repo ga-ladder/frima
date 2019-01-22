@@ -1,7 +1,7 @@
 # frima
-## database
+# database
 
-### products table
+## products table
 | columnName | type | option|
 ----|----|----
 |name|string|null:false|
@@ -14,7 +14,7 @@
 |derivery_way|integer|null:false|
 |derivery_day|integer|null:false|
 
-_association_
+### association
 belongs_to :category
 belongs_to :brands
 has_many :sizes
@@ -47,22 +47,22 @@ _derivery_day_
 
 2:4~7日以内に発送
 
-### brand table
+## brand table
 | columnName | type | option|
 ----|----|----
 |name|string|デフォルトで入力しておく|
 
-_association_
+### association
 
 has_many :products
 
-### categories table
+## categories table
 | columnName | type | option|
 ----|----|----
 |name|string|
 |parent_id|references|
 
-_association_
+### association
 
 has_many :subcategories,
 class_name: "Category",
@@ -73,20 +73,20 @@ belongs_to :parent, class_name: "Category"
 !! デフォルトで入力しておく
 
 
-### sizes table
+## sizes table
 | columnName | type | option|
 ----|----|----
 |size|integer|
 |product_id|references|
 
-_association_
+### association
 
 belongs_to :product
 
 
 ------
 
-### users table
+## users table
 | columnName | type | option|
 ----|----|----
 |nickname|string|
@@ -96,7 +96,7 @@ belongs_to :product
 |providor|string|omniauth|
 |uid|string|omniauth|
 
-_association_
+### association
 
 has_one :profile
 has_one :resident
@@ -105,16 +105,16 @@ has_one :customer
 has_many :product_users
 has_many :products, through: :product_users
 
-### profiles table
+## profiles table
 | culumnName | type | option|
 ----|----|----
 |profile|text|
 
-_association_
+### association
 
 belongs_to :user
 
-### residents table
+## residents table
 | culumnName | type | option|
 ----|----|----
 |realname|string|null:false|
@@ -127,50 +127,50 @@ belongs_to :user
 |building_name|string|
 |phone_number|integer|
 
-_association_
+### association
 has_one :customer
 
-### customers table
+## customers table
 | columnName | type | option|
 ----|----|----
 |customer_id|string|payjp customer|
 |user_id|references|
 
-_association_
+### association
 belongs_to :user
 
 -----
 
-### product_users table(中間テーブル)
+## product_users table(中間テーブル)
 | columnName | type | option|
 ----|----|----
 |user_id|references|index :true|
 |product_id|references|index :true|
 
-_association_
+### association
 
 belongs_to :user
 belongs_to :product
 
-### likes
+## likes
 | columnName | type | option|
 ----|----|----
 |product_id|references|index :true|
 |user_id|references|index :true|
 
-_association_
+### association
 
 belongs_to :user
 belongs_to :product
 
-### evaluations table
+## evaluations table
 | columnName | type | option|
 ----|----|----
 |product_id|references|index :true|
 |user_id|references|index :true|
 |status|integer|null:false|
 |comment|text||
-_association_
+### association
 belongs_to :user
 belongs_to :product
 
@@ -179,18 +179,18 @@ status(顔文字の部分)
 1:普通
 2:困る
 
-### histories table
+## histories table
 | columnName | type | option|
 ----|----|----
 |product_id|references|index :true|
 |user_id|references|index :true|
 |timestamp|
 
-_association_
+### association
 belongs_to :user
 belongs_to :product
 
-### sales table
+## sales table
 | culumnName | type | option|
 ----|----|----
 |product_id|references|index:true|
@@ -199,7 +199,7 @@ belongs_to :product
 |status|integer|pay or repayment|
 |charge_id|string|payjp請求id|
 
-_association_
+### association
 belongs_to :product
 
 -------
