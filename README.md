@@ -14,7 +14,7 @@
 |derivery_way|integer|null:false|
 |derivery_day|integer|null:false|
 
-** association **
+_association_
 belongs_to :category
 belongs_to :brands
 has_many :sizes
@@ -52,7 +52,7 @@ _derivery_day_
 ----|----|----
 |name|string|デフォルトで入力しておく|
 
-** association **
+_association_
 
 has_many :products
 
@@ -62,7 +62,7 @@ has_many :products
 |name|string|
 |parent_id|references|
 
-** association **
+_association_
 
 has_many :subcategories,
 class_name: "Category",
@@ -79,7 +79,7 @@ belongs_to :parent, class_name: "Category"
 |size|integer|
 |product_id|references|
 
-** association **
+_association_
 
 belongs_to :product
 
@@ -96,7 +96,7 @@ belongs_to :product
 |providor|string|omniauth|
 |uid|string|omniauth|
 
-** association **
+_association_
 
 has_one :profile
 has_one :resident
@@ -110,7 +110,7 @@ has_many :products, through: :product_users
 ----|----|----
 |profile|text|
 
-** association **
+_association_
 
 belongs_to :user
 
@@ -127,7 +127,7 @@ belongs_to :user
 |building_name|string|
 |phone_number|integer|
 
-** association **
+_association_
 has_one :customer
 
 ### customers table
@@ -136,7 +136,7 @@ has_one :customer
 |customer_id|string|payjp customer|
 |user_id|references|
 
-** association **
+_association_
 belongs_to :user
 
 -----
@@ -147,7 +147,7 @@ belongs_to :user
 |user_id|references|index :true|
 |product_id|references|index :true|
 
-** association **
+_association_
 
 belongs_to :user
 belongs_to :product
@@ -158,7 +158,7 @@ belongs_to :product
 |product_id|references|index :true|
 |user_id|references|index :true|
 
-** association **
+_association_
 
 belongs_to :user
 belongs_to :product
@@ -170,7 +170,7 @@ belongs_to :product
 |user_id|references|index :true|
 |status|integer|null:false|
 |comment|text||
-** association **
+_association_
 belongs_to :user
 belongs_to :product
 
@@ -186,7 +186,7 @@ status(顔文字の部分)
 |user_id|references|index :true|
 |timestamp|
 
-** association **
+_association_
 belongs_to :user
 belongs_to :product
 
@@ -199,7 +199,7 @@ belongs_to :product
 |status|integer|pay or repayment|
 |charge_id|string|payjp請求id|
 
-** association **
+_association_
 belongs_to :product
 
 -------
