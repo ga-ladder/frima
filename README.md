@@ -15,31 +15,41 @@
 |derivery_day|integer|null:false|
 
 ### association
+
 belongs_to :category
+
 belongs_to :brands
+
 has_many :sizes
+
 has_many :likes
+
 has_many :histories
+
 has_many :sales
+
 has_many_attached :images
 
-_中間テーブル_
+### 中間テーブル
 
 has_many :product_users
+
 has_many :users, through: :product_users
 
 
-_condition_
+### condition
 
 0:新品
+
 1:目立った傷や汚れなし
 
-_delivery_way_
+### delivery_way
 
 0:本人負担
+
 1:送料込み（出品者負担）
 
-_derivery_day_
+### derivery_day
 
 0:1~2日以内に発送
 
@@ -65,7 +75,9 @@ has_many :products
 ### association
 
 has_many :subcategories,
+
 class_name: "Category",
+
 foreign_key: "parent_id"
 
 belongs_to :parent, class_name: "Category"
@@ -99,10 +111,13 @@ belongs_to :product
 ### association
 
 has_one :profile
+
 has_one :resident
+
 has_one :customer
 
 has_many :product_users
+
 has_many :products, through: :product_users
 
 ## profiles table
@@ -128,6 +143,7 @@ belongs_to :user
 |phone_number|integer|
 
 ### association
+
 has_one :customer
 
 ## customers table
@@ -137,6 +153,7 @@ has_one :customer
 |user_id|references|
 
 ### association
+
 belongs_to :user
 
 -----
@@ -150,6 +167,7 @@ belongs_to :user
 ### association
 
 belongs_to :user
+
 belongs_to :product
 
 ## likes
@@ -161,6 +179,7 @@ belongs_to :product
 ### association
 
 belongs_to :user
+
 belongs_to :product
 
 ## evaluations table
@@ -170,11 +189,15 @@ belongs_to :product
 |user_id|references|index :true|
 |status|integer|null:false|
 |comment|text||
+
 ### association
+
 belongs_to :user
+
 belongs_to :product
 
 status(顔文字の部分)
+
 0:笑顔
 1:普通
 2:困る
@@ -187,7 +210,9 @@ status(顔文字の部分)
 |timestamp|
 
 ### association
+
 belongs_to :user
+
 belongs_to :product
 
 ## sales table
@@ -200,6 +225,7 @@ belongs_to :product
 |charge_id|string|payjp請求id|
 
 ### association
+
 belongs_to :product
 
 -------
