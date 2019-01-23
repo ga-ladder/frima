@@ -1,0 +1,126 @@
+<div class="main">
+
+<div class="registration-container">
+  <div class="form__container">
+    <header>商品の情報を入力</header>
+
+    <div class="form__item">
+      <label>出品画像</label>
+      <span>必須</span>
+        <div class="drop">
+          <% (0..2).each do |a| %>
+          <div class="drop__dropped">
+            <img src="https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m91179566795_1.jpg?1545027032" class="drop__image">
+            <ul class="drop__list">
+              <li><button id="imageEdit">編集</button></li>
+              <li><button id="imageDelete">削除</button></li>
+            </ul>
+          </div>
+          <% end %>
+          <label for="product" class="drop__zone">
+            ドラッグアンドドロップ<br>
+            またはクリックしてファイルをアップロード
+            <%= file_field_tag :product, multiple:true, class: "hidden" %>
+          </label>
+        </div>
+    </div>
+    <div class="form__item">
+      <label>商品名</label>
+      <span>必須</span>
+      <input placeholder="商品名(必須40文字まで)" class="listInput">
+    </div>
+    <div class="form__item">
+      <label>商品の説明</label>
+      <span>必須</span>
+      <textarea rows="6"placeholder="商品の説明"></textarea>
+    </div>
+
+    <div class="form__detail">
+    <div class="form__heading">商品の詳細</div>
+    <div class="form__item">
+      <label>カテゴリー</label>
+      <span>必須</span>
+      <select name="category">
+        <option>--</option>
+      </select>
+    </div>
+    </div>
+    <div class="form__detail">
+      <div class="form__heading"></div>
+      <div class="form__item">
+        <label>商品の状態</label>
+        <span>必須</span>
+        <select name="category">
+          <option>--</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form__detail">
+     <div class="form__heading">配送について</div>
+     <div class="form__item">
+        <label>配送料の負担</label>
+        <span>必須</span>
+        <select name="category">
+          <option>--</option>
+          <option>送料込み（出品者負担）</option>
+          <option>着払い（購入者負担）</option>
+        </select>
+      </div>
+    </div>
+    <div class="form__detail">
+      <div class="form__heading"></div>
+      <div class="form__item">
+        <label>配送元の地域</label>
+        <span>必須</span>
+        <select name="category">
+          <option>--</option>
+        </select>
+      </div>
+    </div>
+    <div class="form__detail">
+      <div class="form__heading"></div>
+      <div class="form__item">
+        <label>配送までの日数</label>
+        <span>必須</span>
+        <select name="category">
+          <option>--</option>
+          <option>1-2日で発送</option>
+          <option>2-3日で発送</option>
+          <option>4-7日で発送</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form__detail">
+      <div class="form__heading">販売価格(300~9,999,999)</div>
+      <div class="form__item form__price">
+        <label>価格</label>
+        <span>必須</span>
+        <label class="en">¥</label>
+        <input placeholder="300~">
+      </div>
+    </div>
+    <div class="form__detail">
+      <div class="form__heading"></div>
+      <div class="form__item form__price">
+        <label>販売手数料(10%)</label>
+        <label class="en">¥</label>
+        <div class="form__price__commission"></div>
+      </div>
+    </div>
+    <div class="form__detail">
+      <div class="form__heading"></div>
+      <div class="form__item form__price">
+        <label>販売利益</label>
+        <label class="en">¥</label>
+        <div class="form__price__commission"></div>
+      </div>
+    </div>
+  <button class="registration">
+    出品する
+  </button>
+</div>
+</div>
+
+</div>

@@ -110,7 +110,209 @@
       align-items:center;
     }
   }
+}
 
+
+
+/*
+ * user_registrationから取ってきた．
+ * こっちを更新する
+*/
+@mixin listInput() {
+  width: 100%;
+  margin: 8px 0 0;
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+.registration-container{
+  header{
+    padding: 32px 16px;
+    font-size: 22px;
+    line-height: 1.5;
+    text-align: center;
+    border-bottom: 2px solid #f5f5f5;
+  }
+  .registration{
+    display:block;
+    margin: 40px 0 0;
+    height:60px;
+    width:100%;
+    font-weight: 600;
+    font-size: 20px;
+    color: white;
+    background-color:#ea352d;
+    cursor:pointer;
+    &:focus{
+      outline: 0;
+    }
+  }
+}
+
+.form{
+  &__container{
+    width:700px;
+    margin: 0 auto;
+    padding:40px;
+    background: white;
+    border-top: 1px solid #f5f5f5;
+    .listInput{
+      @include listInput();
+    }
+    select{
+      @include listInput();
+    }
+    label{
+      margin:0px;
+      font-weight:600;
+    }
+    span{
+      margin: 0 0 0 8px;
+      padding: 2px 4px;
+      border-radius: 2px;
+      background-color: #ea352d;
+      color:white;
+      font-size: 12px;
+    }
+    textarea{
+      @include listInput();
+      height:auto;
+    }
+  }
+  &__item{
+    margin-top:24px;
+  }
+  &__heading{
+    color:#ccc;
+    width:50%;
+    float:left;
+    margin-bottom:24px;
+  }
+  &__detail{
+    width:100%;
+    display:flex;
+    margin-top:24px;
+  }
+  &__heading + &__item{
+    right:0;
+    width:100%;
+    padding:1px;
+  }
+  @media (max-width:480px) {
+    &__detail{
+      width:100%;
+      display:block;
+    }
+    &__heading + &__item{
+      right:0;
+      width:100%;
+    }
+  }
+  &__price{
+    display:flex;
+    white-space: nowrap;
+    height:48px;
+    align-items:center;
+    border-bottom:2px #eee solid;
+    padding-bottom:24px;
+    .en{
+      display:flex;
+      align-items:center;
+      height:48px;
+      margin:0 10px 0 25%;
+    }
+    input{
+      @include listInput();
+      margin:0;
+      text-align:right;
+    }
+    &__commission{
+      width:25%;
+      text-align:right;
+      height:48px;
+    }
+    @media (max-width:480px) {
+      input, &__commission{width:50%;}
+      .en{right:50%;}
+    }
+  }
+}
+.drop{
+  display: flex;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  background: rgba(0,0,0,.05);
+  &__dropped{
+    width: 25%;
+  }
+  &__list{
+    position: relative;
+    top:16px;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 1px;
+    margin:0;
+    button{
+      border:none;
+      background:inherit;
+    }
+  }
+  &__image{
+    width: 100%;
+    height: auto;
+    float: left;
+  }
+  &__zone{
+    flex: 1;
+    background: rgba(0,0,0,.1);
+    border: 4px rgba(0,0,0,.2) dashed;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    p{
+      width:100%;
+      flex-grow: 0;
+      font-size:.8rem;
+    }
+  }
+}
+.drop__dropped + .drop__dropped + .drop__dropped + .drop__dropped + .drop__zone {
+  display: none;
+}
+.hidden{
+  display: none;
+}
+
+.modal{
+  position: fixed;
+  top:0;
+  background: rgba(0,0,0,.65);
+  height:100vh;
+  width:100vw;
+  &__container{
+    margin:40px;
+    padding:0 40px 40px 40px;
+    background:white;
+  }
+  &__body{
+    margin-top:20px;
+    padding-top:20px;
+  }
+  a{
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
 }
 
 /*!
