@@ -1,0 +1,44 @@
+// Place all the styles related to the category controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.category{
+  background: #f5f5f5;
+  padding:40px 0;
+  &__list{
+    margin: 24px 0;
+  }
+  &__header{
+    margin: 0 auto;
+    width: 1100px;
+  }
+  &__element{
+    margin-right:10px;
+    font-size:.9em;
+  }
+  &__container{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 1200px;
+  }
+  &__item{
+    margin-bottom: 20px;
+  }
+}
+
+.breadcrumbs{
+  width: 100vw;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16) !important;
+  ul{
+    display: flex;
+    list-style: none;
+    padding: 17px 0 16px;
+    margin-bottom: 3px;
+    border-top: 1px solid #eee;
+  }
+  li+li:before{
+    margin: 0 10px 0 10px;
+    content:">";
+  }
+}
