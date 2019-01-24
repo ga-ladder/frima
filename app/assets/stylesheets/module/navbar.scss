@@ -40,6 +40,7 @@
     display:flex;
     width:100%;
     justify-content:space-between;
+    font-size:0.8em;
     .left-bar{
       li{
         display:inline;
@@ -97,7 +98,6 @@
         display:flex;
         justify-content:space-around;
         align-items:center;
-        font-size:0.8em;
         li:nth-child(2){
           display:flex;
           user-select: none;
@@ -130,5 +130,10 @@
         }
       }
     }
+  }
+}
+@media (min-width: 1200px){
+  .nav-bar{
+    width: 1020px;
   }
 }
