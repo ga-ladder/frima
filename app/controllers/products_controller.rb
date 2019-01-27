@@ -5,7 +5,10 @@ class ProductsController < ApplicationController
 
   def show; end
 
-  def new; end
+  def new
+    @product = Product.new
+    @categories = Category.where("parent_id = ?", 0)
+  end
 
   def create
     # modal_create を render
