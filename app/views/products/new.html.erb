@@ -2,22 +2,14 @@
 
 <div class="registration-container">
   <div class="form__container">
+    <%= form_for @product do |f| %>
     <header>商品の情報を入力</header>
-
     <div class="form__item">
       <label>出品画像</label>
       <span>必須</span>
-        <div class="drop">
-          <% (0..2).each do |a| %>
-          <div class="drop__dropped">
-            <img src="https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m91179566795_1.jpg?1545027032" class="drop__image">
-            <ul class="drop__list">
-              <li><button id="imageEdit">編集</button></li>
-              <li><button id="imageDelete">削除</button></li>
-            </ul>
-          </div>
-          <% end %>
-          <label for="product" class="drop__zone">
+        <div class="drop" id="drop">
+          <%= f.file_field :image %>
+          <label for="product" id="dropbox" class="drop__zone">
             ドラッグアンドドロップ<br>
             またはクリックしてファイルをアップロード
             <%= file_field_tag :product, multiple:true, class: "hidden" %>
@@ -27,12 +19,12 @@
     <div class="form__item">
       <label>商品名</label>
       <span>必須</span>
-      <input placeholder="商品名(必須40文字まで)" class="listInput">
+      <%= f.text_field :name, placeholder:"商品名(必須40文字まで)", class: "listInput" %>
     </div>
     <div class="form__item">
       <label>商品の説明</label>
       <span>必須</span>
-      <textarea rows="6"placeholder="商品の説明"></textarea>
+      <%= f.text_area :description, rows:6, placeholder:"商品の説明" %>
     </div>
 
     <div class="form__detail">
@@ -40,9 +32,7 @@
     <div class="form__item">
       <label>カテゴリー</label>
       <span>必須</span>
-      <select name="category">
-        <option>--</option>
-      </select>
+      <%= select :root, :category, @categories.map{|t| [t.category, t.id]}, prompt: "--" %>
     </div>
     </div>
     <div class="form__detail">
@@ -50,9 +40,7 @@
       <div class="form__item">
         <label>商品の状態</label>
         <span>必須</span>
-        <select name="category">
-          <option>--</option>
-        </select>
+        <%= f.select :condition, [["新品",0],["目立った傷や汚れなし",1]], prompt: "--" %>
       </div>
     </div>
 
@@ -61,11 +49,7 @@
      <div class="form__item">
         <label>配送料の負担</label>
         <span>必須</span>
-        <select name="category">
-          <option>--</option>
-          <option>送料込み（出品者負担）</option>
-          <option>着払い（購入者負担）</option>
-        </select>
+        <%= f.select :derivery_way, [["送料込み（出品者負担）",0],["着払い（購入者負担）",1]], prompt: "--" %>
       </div>
     </div>
     <div class="form__detail">
@@ -73,9 +57,7 @@
       <div class="form__item">
         <label>配送元の地域</label>
         <span>必須</span>
-        <select name="category">
-          <option>--</option>
-        </select>
+        <%= f.select :derivery_source, [["北海道",0],["沖縄",1]], prompt: "--" %>
       </div>
     </div>
     <div class="form__detail">
@@ -83,12 +65,7 @@
       <div class="form__item">
         <label>配送までの日数</label>
         <span>必須</span>
-        <select name="category">
-          <option>--</option>
-          <option>1-2日で発送</option>
-          <option>2-3日で発送</option>
-          <option>4-7日で発送</option>
-        </select>
+        <%= f.select :derivery_day, [["1-2日で発送",0],["2-3日で発送",1],["4-7日で発送",2]], prompt: "--" %>
       </div>
     </div>
 
@@ -98,7 +75,7 @@
         <label>価格</label>
         <span>必須</span>
         <label class="en">¥</label>
-        <input placeholder="300~">
+        <%= f.text_field :price, placeholder:"300~" %>
       </div>
     </div>
     <div class="form__detail">
@@ -117,9 +94,9 @@
         <div class="form__price__commission"></div>
       </div>
     </div>
-  <button class="registration">
-    出品する
-  </button>
+    <%= f.submit "出品する", class:"registration" %>
+
+  <% end %>
 </div>
 </div>
 
