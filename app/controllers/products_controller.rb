@@ -27,6 +27,6 @@ class ProductsController < ApplicationController
 
   protected
   def product_params
-    params.require(:product).permit(:name, :description, :condition, :derivery_way, :derivery_source, :derivery_day, :price)
+    params.require(:product).permit(:name, :description, :condition, :derivery_way, :derivery_source, :derivery_day, :price, images: [])
   end
 end

@@ -10,29 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190124081356) do
+ActiveRecord::Schema.define(version: 2019_01_28_033327) do
 
-  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "category",   null: false
-    t.integer  "parent_id"
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "categories", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "category", null: false
+    t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                          null: false
-    t.text     "description",     limit: 65535, null: false
-    t.integer  "price",                         null: false
-    t.integer  "bland_id"
-    t.integer  "category_id",                   null: false
-    t.integer  "condition",                     null: false
-    t.integer  "derivery_source",               null: false
-    t.integer  "derivery_way",                  null: false
-    t.integer  "derivery_day",                  null: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.index ["bland_id"], name: "index_products_on_bland_id", using: :btree
-    t.index ["category_id"], name: "index_products_on_category_id", using: :btree
+  create_table "products", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.integer "price", null: false
+    t.integer "bland_id"
+    t.integer "category_id", null: false
+    t.integer "condition", null: false
+    t.integer "derivery_source", null: false
+    t.integer "derivery_way", null: false
+    t.integer "derivery_day", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bland_id"], name: "index_products_on_bland_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
 end
