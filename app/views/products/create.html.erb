@@ -7,12 +7,12 @@
     <div class="modal__body">
       あなたが出品した商品は「出品した商品一覧」からいつでもみることができます．
     </div>
-    <%= link_to "/products/new" do %>
+    <%= link_to new_product_path do %>
       <button class="registration">
         続けて出品する
       </button>
     <% end %>
-    <%= link_to "商品ページへ行ってシェアする", @product %>
+    <%= link_to "商品ページへ行ってシェアする", product_path(@product) %>
   </div>
   </div>
 </div>

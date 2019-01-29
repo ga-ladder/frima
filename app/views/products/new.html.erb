@@ -8,11 +8,10 @@
       <label>出品画像</label>
       <span>必須</span>
         <div class="drop" id="drop">
-          <%= f.file_field :image %>
-          <label for="product" id="dropbox" class="drop__zone">
+          <label for="product_images" id="dropbox" class="drop__zone">
             ドラッグアンドドロップ<br>
             またはクリックしてファイルをアップロード
-            <%= file_field_tag :product, multiple:true, class: "hidden" %>
+            <%= f.file_field :images, multiple:true, class: "hidden" %>
           </label>
         </div>
     </div>
@@ -29,7 +28,7 @@
 
     <div class="form__detail">
     <div class="form__heading">商品の詳細</div>
-    <div class="form__item">
+    <div class="form__item" id="category">
       <label>カテゴリー</label>
       <span>必須</span>
       <%= select :root, :category, @categories.map{|t| [t.category, t.id]}, prompt: "--" %>
@@ -75,7 +74,7 @@
         <label>価格</label>
         <span>必須</span>
         <label class="en">¥</label>
-        <%= f.text_field :price, placeholder:"300~" %>
+        <%= f.text_field :price, placeholder:"300~", autocomplete:"off" %>
       </div>
     </div>
     <div class="form__detail">
