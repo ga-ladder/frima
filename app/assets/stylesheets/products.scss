@@ -176,6 +176,9 @@
       @include listInput();
       height:auto;
     }
+    p{
+      color:red;
+    }
   }
   @media (max-width:720px) {
     &__container{
