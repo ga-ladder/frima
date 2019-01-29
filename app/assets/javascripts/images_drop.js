@@ -1,93 +1,129 @@
-$(function(){
-  /* ドラッグ&ドロップで画像投稿 */
-  var dropbox;
-  /*イベントハンドラを止める1*/
-  dropbox = document.getElementById("dropbox");
-  dropbox.addEventListener("dragenter", dragenter, false);
-  dropbox.addEventListener("dragover", dragover, false);
-  dropbox.addEventListener("drop", drop, false);
-  /* イベントハンドラを止める method1 */
-  function dragenter(e) {
-    e.stopPropagation();
-    e.preventDefault();
-    len = $("#dropbox")[0].children.length;
-    console.log(len)
-    if (len < 1){
-      element = document.createElement('p')
-      element.textContent = "ここにいれてね"
-      element
-      document.getElementById("dropbox").appendChild(element);
-    }
+/* drag & drop イベントを止める */
+function dragenter(e) {
+  e.stopPropagation();
+  e.preventDefault();
+}
+
+function dragover(e) {
+  e.stopPropagation();
+  e.preventDefault();
+}
+
+function drop(e) {
+  e.stopPropagation();
+  e.preventDefault();
+
+  var dt = e.dataTransfer;
+  inputFiles[0].files = dt.files;
+}
+/* ------------------------------------------- */
+
+function createImage(blob) {
+  var blobURL = URL.createObjectURL(blob),
+  image = $("<img>", {
+    class:'drop__image',
+    name: blob.name,
+    src:blobURL
+  })[0];
+
+  return image;
+}
+
+function imgComponent(image){
+  var droppedComponent = $("<div>", { class:'drop__dropped' })[0];
+  var ul = "<ul class=\"drop__list\">";
+  ul += "<li><label for=\"product_images\" id=\"editImg\">編集</label></li>";
+  ul += "<li><label id=\"deleteImg\">削除</label></li>";
+  ul += "</ul>";
+
+  droppedComponent.appendChild(image);
+  droppedComponent.innerHTML += ul;
+
+  return droppedComponent;
+}
+
+/* -------------------------------------------------- */
+
+function manageFileList(listFiles, collection){
+  for (var i = 0; i < listFiles.length; i++) {
+    collection.push(listFiles[i])
   }
+  return collection;
+}
 
-  /* イベントハンドラを止めるmethod2 */
-  function dragover(e) {
-    e.stopPropagation();
-    e.preventDefault();
+function handleFile(fileList, imgField) {
+  /* ファイルリストを処理するコードがここに入る */
+  /* 複数のファイルオブジェクトをもらう(fileList) */
+  for (var i = 0; i < fileList.length; i++) {
+    var file = fileList[i];
+    var objectURL = window.URL.createObjectURL(file);
+    var image = createImage(file);
+    var outputImg = imgComponent(image);
+    /* 画像を1つ表示させる */
+    imgField.insertBefore(outputImg, dropbox);
   }
-  /* イベントハンドラを止めるmethod2 */
+}
 
-  function drop(e) {
-    e.stopPropagation();
-    e.preventDefault();
+/* -------------------------------------------------- */
+// 追加した画像を削除
 
-    var dt = e.dataTransfer;
-    var files = dt.files;
+function elementDelete(element){
+  var deleteElement = element.parents('.drop__dropped');
+  fileName = deleteElement[0].firstElementChild.name
+  fileCollection.some(function(file, i){
+    if (file.name===fileName) fileCollection.splice(i,1);
+  });
+  deleteElement.remove();
+}
 
-    handleFile(files);
-  }
-
-  function imgHTML(url){
-    var edit =`
-      <label for="product" id="dropbox">
-        編集
-        <input type="file" class="hidden" id="product">
-      </label>`
-    var html =`
-          <div id="" class="drop__dropped">
-            <img src=${ url } class="drop__image">
-            <ul class="drop__list">
-              <li>${ edit }</li>
-              <li><button id="imageDelete">削除</button></li>
-            </ul>
-          </div>
-          <input type:file value img>
-          `
-    return html
-  }
-
-  /* 複数のファイルオブジェクトをもらって画像を表示させる */
-  function handleFile(fileList) {
-    console.log(fileList);
-
-    /* ファイルリストを処理するコードがここに入る */
-    var objectURL = window.URL.createObjectURL(fileList[0]);
-
+/* -------------------------------------------------- */
+// main
+$(document).on('turbolinks:load',function(){
+  if(window.location.href.indexOf("products/new") > -1){
     var imgField = document.getElementById("drop");
-    imgField.insertAdjacentHTML('afterbegin',imgHTML(objectURL));
+    var clickLabel = "";
+
+    /* ドラッグ&ドロップで画像表示 */
+    var dropbox;
+    /*イベントを止める*/
+    dropbox = $("#dropbox")[0];
+    dropbox.addEventListener("dragenter", dragenter, false);
+    dropbox.addEventListener("dragover", dragover, false);
+    dropbox.addEventListener("drop", drop, false);
+
+    fileCollection = [];
+    inputFiles = $('#product_images');
+    var fileList = inputFiles[0].files;
+
+    inputFiles.off('change')
+    inputFiles.on('change', function (e) {
+      $(".drop__dropped").remove()
+      fileList = $(this)[0].files
+console.log("回数確認")
+    /* -------------------------------------------------- */
+    // キャンセルボタンを押しているかどうか(通常時/編集時)
+      if (!fileList.length){
+        e.stopPropagation()
+      }else if (clickLabel === "editImg"){
+        elementDelete(clickImage);
+      }
+      clickLabel = "";
+
+    /* -------------------------------------------------- */
+    // 追加された画像をarrayに入れて表示（複数）
+      fileCollection = manageFileList(fileList,fileCollection);
+      handleFile(fileCollection, imgField);
+    });
+
+  /* -------------------------------------------------- */
+  // 削除 編集 機能
+    $("#drop").on('click',".drop__dropped ul [id=deleteImg]",function(){
+      elementDelete($(this));
+    })
+    $("#drop").on('click',".drop__dropped ul [id=editImg]",function(){
+      // elementDelete($(this));
+      clickLabel = "editImg";
+      clickImage = $(this)
+    })
   }
-
-
-
-
-$('#myImage').on('change', function (e) {
-    var reader = new FileReader();
-    reader.onload = function (e) {
-        $("#preview").attr('src', e.target.result);
-    }
-    reader.readAsDataURL(e.target.files[0]);
-});
-
-
-
-
-
-
-
-
-
-
-
-
 })
-
