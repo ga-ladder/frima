@@ -3,18 +3,18 @@
 class ProductsController < ApplicationController
   def index; end
 
-  def show; end
+  def show
+    @product = Product.find(params[:id])
+  end
 
   def new
     @product = Product.new
-    @categories = Category.where("parent_id = ?", 0)
+    @categories = Category.root_set
   end
 
   def create
     @product = Product.new(product_params)
-    unless params[:product][:images].nil?
-      @product.images.attach(params[:product][:images])
-    end
+    @product.images.attach(params[:product][:images]) unless params[:product][:images].nil?
 
     if @product.save
       respond_to do |format|
@@ -27,6 +27,7 @@ class ProductsController < ApplicationController
   end
 
   protected
+
   def product_params
     params.require(:product).permit(
       :name,
@@ -37,6 +38,7 @@ class ProductsController < ApplicationController
       :derivery_source,
       :derivery_day,
       :price,
-      images:[])
+      images: []
+    )
   end
 end

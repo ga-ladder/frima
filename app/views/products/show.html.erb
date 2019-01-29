@@ -4,18 +4,22 @@
   <div class="item-container">
     <div class="item-content">
       <div class="item-content__images">
-        <img src="https://static-mercari-jp-imgtr2.akamaized.net/item/detail/orig/photos/m35640284017_1.jpg?1545195572"height="300px" width="300px">
+        <% if @product.images.attached? then %>
+        <%= image_tag @product.images.first, size:"300x300" %>
         <ul>
-          <% (0..3).each do |i| %>
-            <li><img src="https://static-mercari-jp-imgtr2.akamaized.net/item/detail/orig/photos/m35640284017_1.jpg?1545195572" ></li>
+          <% @product.images.each do |image| %>
+            <li>
+              <%= image_tag image %>
+            </li>
           <% end %>
         </ul>
+        <% end %>
       </div>
       <%= render "products/show/table" %>
 
     </div>
     <div class="price">
-      <b>$8,000</b>
+      <b><%= @product.price %></b>
       <span>(税込)</span>
       送料込み
     </div>
@@ -23,15 +27,7 @@
       購入画面に進む
     </button>
     <p>
-      「満願」
-      米澤穂信
-      定価: ￥ 723
-
-      #米澤穂信 #本 #BOOK #文庫 #文学 #小説
-
-      主なミステリーランキングで3冠を制覇し、幅広い読者を驚嘆させた短篇集の金字塔。
-      写真で検討を願います。プロフィールを読んで下さい。
-      17
+      <%= @product.description %>
     </p>
     <div class="button-container">
       <button>
@@ -47,5 +43,3 @@
     </div>
   </div>
 </div>
-
-
