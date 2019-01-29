@@ -22,6 +22,7 @@ class ProductsController < ApplicationController
         format.json { render template: "products/create.html.erb" }
       end
     else
+      flash[:notice] = 'not yet'
       render :new
     end
   end
