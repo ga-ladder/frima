@@ -11,9 +11,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    # @product = Product.new(name:"test", description:"test teext", condition:1, derivery_way:2, derivery_source:3, derivery_day:3, price:333, category_id:0)
     @product = Product.new(product_params)
-    @categories = Category.where("parent_id = ?", 0)
     unless params[:product][:images].nil?
       @product.images.attach(params[:product][:images])
     end
