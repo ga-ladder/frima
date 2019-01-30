@@ -1,5 +1,5 @@
-$(document).on('turbolinks:load',function(){
-  if(window.location.href.indexOf("products/new") > -1){
+$(function(){
+  if(window.location.href.indexOf("products") > -1){
 
     var inputPrice = $("#product_price");
     inputPrice.on("change", function(){
