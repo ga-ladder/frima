@@ -1,5 +1,5 @@
-$(document).on('turbolinks:load',function(){
-  if(window.location.href.indexOf("products/new") > -1){
+$(function(){
+  if(window.location.href.indexOf("products") > -1){
 
     $("#new_product").on('submit',function(e){
       e.preventDefault();
@@ -22,12 +22,18 @@ $(document).on('turbolinks:load',function(){
         dataType:'html'
       })
       .done(function(data){
-        $("#complete").append(data).hide().fadeIn(1000);
+        d = data;
+        console.log(d)
+        var okOrNot = renderData(data).className === "modal";
+        if (okOrNot){
+          $("#complete").append(data).hide().fadeIn(300);
+        } else {
+          $("#new_product")[0].submit();
+        }
       })
       .fail(function(e){
         console.log(e)
       })
     })
-
   }
 })
