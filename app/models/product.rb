@@ -8,6 +8,7 @@ class Product < ApplicationRecord
             :price,
             :category_id,
             :condition,
+            :derivery_source,
             :derivery_way,
             :derivery_day,
             presence: true
