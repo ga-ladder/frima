@@ -13,13 +13,14 @@ class ProductsController < ApplicationController
   end
 
   def create
+    @categories = Category.root_set
     @product = Product.new(product_params)
-    @product.images.attach(params[:product][:images]) unless params[:product][:images].nil?
 
     if @product.save
+      @product.images.attach(params[:product][:images]) unless params[:product][:images].nil?
       respond_to do |format|
-        format.html { render template: "products/create.html.erb" }
-        format.json { render template: "products/create.html.erb" }
+        format.html { render :create }
+        format.json { render :create }
       end
     else
       render :new
