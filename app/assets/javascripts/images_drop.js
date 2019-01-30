@@ -12,9 +12,18 @@ function dragover(e) {
 function drop(e) {
   e.stopPropagation();
   e.preventDefault();
-
   var dt = e.dataTransfer;
-  inputFiles[0].files = dt.files;
+  var files = dt.files
+
+  if (limitImages(fileCollection,files)){
+    if (allImages(files)){
+      inputFiles[0].files = files;
+    } else {
+      alert("画像ファイル以外のファイルが含まれています")
+    }
+  } else {
+    alert("合計ファイルが４つ以上になってしまいます")
+  }
 }
 /* ------------------------------------------- */
 
@@ -77,9 +86,23 @@ function elementDelete(element){
 }
 
 /* -------------------------------------------------- */
+// 画像ファイルかどうか
+function allImages(files){
+  for (var i = 0; i < files.length; i++) {
+    var mockImage = files[i].type.indexOf("image")
+    if (mockImage !== 0) return false
+  }
+  return true
+}
+
+function limitImages(fileCollection, files){
+  var lengthOfList = fileCollection.length + files.length;
+  return ( lengthOfList <= 4 )
+}
+/* -------------------------------------------------- */
 // main
-$(document).on('turbolinks:load',function(){
-  if(window.location.href.indexOf("products/new") > -1){
+$(function(){
+  if(window.location.href.indexOf("products") > -1){
     var imgField = document.getElementById("drop");
     var clickLabel = "";
 
@@ -99,7 +122,6 @@ $(document).on('turbolinks:load',function(){
     inputFiles.on('change', function (e) {
       $(".drop__dropped").remove()
       fileList = $(this)[0].files
-console.log("回数確認")
     /* -------------------------------------------------- */
     // キャンセルボタンを押しているかどうか(通常時/編集時)
       if (!fileList.length){
@@ -108,7 +130,6 @@ console.log("回数確認")
         elementDelete(clickImage);
       }
       clickLabel = "";
-
     /* -------------------------------------------------- */
     // 追加された画像をarrayに入れて表示（複数）
       fileCollection = manageFileList(fileList,fileCollection);
