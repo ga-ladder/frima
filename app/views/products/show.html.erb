@@ -15,13 +15,13 @@
         </ul>
         <% end %>
       </div>
-      <%= render "products/show/table" %>
+      <%= render "products/show/table", product: @product %>
 
     </div>
     <div class="price">
-      <b><%= @product.price %></b>
+      <b>￥<%= @product.price %></b>
       <span>(税込)</span>
-      送料込み
+      送料込みやべ
     </div>
     <button class="purchase">
       購入画面に進む

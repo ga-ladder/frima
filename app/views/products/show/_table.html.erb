@@ -9,9 +9,11 @@
     <tr>
       <th>カテゴリー</th>
       <td>
-        本・音楽・ゲーム<br>
-        > 本<br>
-        > 文学/小説
+        <%= grand_parent(product.category).category %>
+        <br>
+        > <%= parent(product.category).category %>
+        <br>
+        > <%= product.category.category %>
       </td>
     </tr>
     <tr>
@@ -20,22 +22,30 @@
     </tr>
     <tr>
       <th>商品の状態</th>
-      <td>目立った傷や汚れなし</td>
+      <td>
+        <%= product.condition %>
+      </td>
     </tr>
     <tr>
       <th>配送料の負担</th>
-      <td>送料込み(出品者負担)</td>
+      <td>送料込み(出品者負担)やべ</td>
     </tr>
     <tr>
       <th>配送の方法</th>
-      <td>未定</td>
+      <td>
+        <%= product.derivery_way %>
+      </td>
     </tr>
     <tr>
       <th>配送元地域</th>
-      <td>埼玉県</td>
+      <td>
+        <%= product.derivery_source %>
+      </td>
     </tr>
     <tr>
       <th>発送日の目安</th>
-      <td>4~7日で発送</td>
+      <td>
+        <%= product.derivery_day %>
+      </td>
     </tr>
 </table>
