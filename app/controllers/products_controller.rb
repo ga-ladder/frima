@@ -16,13 +16,16 @@ class ProductsController < ApplicationController
     @categories = Category.root_set
     @product = Product.new(product_params)
 
-    if @product.save
-      @product.images.attach(params[:product][:images]) unless params[:product][:images].nil?
-      respond_to do |format|
-        format.html { render :create }
-        format.json { render :create }
+    if params[:product][:images]
+      if @product.save
+        render :create
+      else
+        @product.images.purge if @product.images.attached?
+        render :new
       end
     else
+      @product.valid?
+      @product.errors.add(:images, "Images can't be blank")
       render :new
     end
   end
