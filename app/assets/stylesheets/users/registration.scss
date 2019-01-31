@@ -1,0 +1,95 @@
+@mixin listItem($background, $font-color) {
+  background: #{$background};
+  color: #{$font-color};
+}
+.user{
+  font-size: .8em;
+  max-width: 456px;
+  background: white;
+  margin: 0 auto;
+  ul{
+    margin:0 auto;
+    padding:40px 64px;
+    li{
+      display:flex;
+      line-height:48px;
+      width:100%;
+      &:nth-child(n+2){
+        margin-top:16px;
+      }
+    }
+    a{
+      color:inherit;
+      margin:0 auto;
+    }
+    .mail{
+      @include listItem(#0099e8, white);
+    }
+    .facebook{
+      @include listItem(#385185,white);
+    }
+    .google{
+      @include listItem(#dc4e41,white)
+    }
+  }
+  &__registration{
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .registration-container{
+    header{
+      padding: 32px 16px;
+      font-size: 22px;
+      line-height: 1.5;
+      text-align: center;
+    }
+  }
+  .registration{
+    display:block;
+    margin: 40px 0 0;
+    height:60px;
+    width:100%;
+    font-weight: 600;
+    font-size: 20px;
+    color: white;
+    background-color:#ea352d !important;
+    cursor:pointer;
+    &:focus{
+      outline: 0;
+    }
+  }
+
+  .form{
+    &__container{
+      border-top: 1px solid #f5f5f5;
+        input{
+        width: 100%;
+        margin: 16px 0 0;
+        height: 48px;
+        padding: 10px 16px 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background: #fff;
+        line-height: 1.5;
+        font-size: 16px;
+      }
+      label{
+        margin:0px;
+        font-weight:600;
+      }
+      span{
+        padding: 2px 4px;
+        border-radius: 2px;
+        background-color: #ea352d;
+        color:white;
+        font-size: 12px;
+      }
+    }
+    &__item{
+      margin:0 auto;
+      padding:40px 64px;
+    }
+  }
+}
+
