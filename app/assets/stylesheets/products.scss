@@ -67,6 +67,14 @@
       }
     }
   }
+  .slickImages{
+    overflow: scroll;
+    max-width: 300px;
+    max-height: 300px;
+    img{
+      overflow: scroll;
+    }
+  }
   .price{
     margin: 24px 0 0;
     text-align: center;

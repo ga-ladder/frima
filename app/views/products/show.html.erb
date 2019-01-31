@@ -5,7 +5,11 @@
     <div class="item-content">
       <div class="item-content__images">
         <% if @product.images.attached? then %>
-        <%= image_tag @product.images.first, size:"300x300" %>
+        <div class="slickImages">
+          <% @product.images.each do |image| %>
+            <%= image_tag image, size:"300x300" %>
+          <% end %>
+        </div>
         <ul>
           <% @product.images.each do |image| %>
             <li>
