@@ -1,0 +1,2 @@
+class RegidentsController < ApplicationController
+end
