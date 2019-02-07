@@ -6,9 +6,11 @@ $(function(){
 
     /* -------------------------------------------------- */
     // paramsの編集
+    console.log(this)
       formData = new FormData($(this).get(0));
       formData.delete("product[images][]")
       for(item of fileCollection) formData.append("product[images][]",item);
+        form = formData
 
     // create action
       var url = $('#new_product').attr('action');
@@ -22,17 +24,16 @@ $(function(){
         dataType:'html'
       })
       .done(function(data){
-        d = data;
-        console.log(d)
-        var okOrNot = renderData(data).className === "modal";
+        var responseData = $(data).filter(".modal");
+        var okOrNot = responseData.length === 1;
         if (okOrNot){
-          $("#complete").append(data).hide().fadeIn(300);
+          $("#complete").append(responseData).hide().fadeIn(300);
         } else {
           $("#new_product")[0].submit();
         }
       })
       .fail(function(e){
-        console.log(e)
+        console.log("error")
       })
     })
   }

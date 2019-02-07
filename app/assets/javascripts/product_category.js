@@ -2,7 +2,6 @@
 // main
 $(function(){
   if(window.location.href.indexOf("products") > -1){
-
     function nextCategory(categoryId){
       var next =
       $.ajax({
@@ -21,11 +20,9 @@ $(function(){
       $("#product_category_id").remove();
 
       var categoryId = $(this)[0].value;
-      console.log(categoryId)
       nextCategory(categoryId).done(function(data){
       // middle category の追加
-        selectData = renderData(data);
-        console.log(selectData)
+        selectData = $(data).filter('#product_category_id')[0];
         $(selectData).attr('id','middle_category')
         $(selectData).attr('name','middle[category]')
         $("#category").append(selectData);
@@ -41,7 +38,9 @@ $(function(){
         var categoryId = $(this)[0].value;
         nextCategory(categoryId).done(function(data){
         // sub category の追加
-          selectData = $(data)[47];
+        console.log(data)
+          selectData = $(data).filter('#product_category_id')[0];
+          console.log(selectData)
           $("#category").append(selectData);
         })
       })
