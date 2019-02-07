@@ -1,0 +1,21 @@
+<ul class="right-bar">
+  <% if user_signed_in? %>
+    <li>
+      <i class="far fa-user"></i>
+      <%= link_to "マイページ", user_path(current_user) %>
+    </li>
+    <li>
+      <i class="far fa-bell"></i> 99+ お知らせ
+    </li>
+    <li>
+      <i class="fas fa-check"></i> やることリスト
+    </li>
+  <% else %>
+    <li>
+      <%= link_to "ログイン", new_user_session_path %>
+    </li>
+    <li>
+      <%= link_to "新規会員登録", sign_up_way_users_path %>
+    </li>
+  <% end %>
+</ul>

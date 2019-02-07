@@ -1,0 +1,87 @@
+<%= render "/layouts/module/navbar" %>
+<%= render "/layouts/module/bread-crumbs" %>
+<div class="main">
+
+<div class="mypage">
+  <%= render "/users/shared/user-menu" %>
+
+  <div class="new resident user-content">
+    <div class="registration-container">
+      <header>会員情報入力</header>
+      <div class="form__container">
+        <div class="form__item">
+          <%= form_with(model: @resident) do |f| %>
+
+            <div class="field">
+              <%= f.label "お名前" %>
+              <span>必須</span>
+              <%= f.text_field :real_first_name, autofocus: true, placeholder:"例）山田" %>
+              <%= f.text_field :real_last_name, autofocus: true, placeholder:"例）彩" %>
+              <% @resident.errors.full_messages_for(:real_first_name).each do |msg| %>
+                <p><%= msg %></p>
+              <% end %>
+              <% @resident.errors.full_messages_for(:real_last_name).each do |msg| %>
+                <p><%= msg %></p>
+              <% end %>
+            </div>
+
+            <div class="field">
+              <%= f.label "お名前カナ" %>
+              <span>必須</span>
+              <%= f.text_field :kana_first_name, placeholder:"例）ヤマダ" %>
+              <%= f.text_field :kana_last_name, autofocus: true, placeholder:"例）アヤ" %>
+              <% @resident.errors.full_messages_for(:kana_first_name).each do |msg| %>
+                <p><%= msg %></p>
+              <% end %>
+              <% @resident.errors.full_messages_for(:kana_last_name).each do |msg| %>
+                <p><%= msg %></p>
+              <% end %>
+            </div>
+
+            <div class="field">
+              <%= f.label "郵便番号" %>
+              <span>必須</span>
+              <%= f.text_field :zip_code, placeholder:"例）1810011" %>
+            </div>
+
+            <div class="field">
+              <%= f.label "都道府県" %>
+              <span>必須</span>
+              <%= f.select :prefecture, ["北海道","沖縄"] %>
+            </div>
+
+            <div class="field">
+              <%= f.label "市区町村" %>
+              <span>必須</span>
+              <%= f.text_field :city_name, placeholder:"横浜市緑区" %>
+            </div>
+
+            <div class="field">
+              <%= f.label "番地" %>
+              <span>必須</span>
+              <%= f.text_field :house_number, placeholder:"青山1-1-1" %>
+            </div>
+
+            <div class="field">
+              <%= f.label "建物名" %>
+              <span class="option">任意</span>
+              <%= f.text_field :building_name, placeholder:"例）柳ビル103" %>
+            </div>
+
+            <div class="field">
+              <%= f.label "電話" %>
+              <span class="option">任意</span>
+              <%= f.text_field :phone_number, placeholder:"例）09012345678" %>
+            </div>
+
+            <div class="field actions">
+              <%= f.submit "住所を登録", class:"registration" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

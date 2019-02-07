@@ -4,7 +4,7 @@
     <ul class="user__registration">
       アカウントをお持ちでない方
       <li class="mail">
-        <%= link_to "新規会員登録", login_way_users_path %>
+        <%= link_to "新規会員登録", sign_up_way_users_path %>
       </li>
     </ul>
     <div class="form__container">
@@ -13,22 +13,20 @@
         <li class="google"><a href="#">Googleでログイン</a></li>
       </ul>
       <div class="user__registration">
-        <div class="form__item">
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class="field">
-              <%= f.email_field :email, autofocus: true, autocomplete: "off", placeholder:"メールアドレス" %>
-            </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <%= f.email_field :email, autofocus: true, autocomplete: "off", placeholder:"メールアドレス" %>
+          </div>
 
-            <div class="field">
-              <%= f.password_field :password, placeholder:"パスワード" %>
-            </div>
+          <div class="field">
+            <%= f.password_field :password, placeholder:"パスワード" %>
+          </div>
 
-            <div class="actions">
-              <%= f.submit "ログイン", class: "registration" %>
-            </div>
-          <% end %>
+          <div class="actions">
+            <%= f.submit "ログイン", class: "registration" %>
+          </div>
+        <% end %>
         <%= render "users/shared/links" %>
-        </div>
       </div>
     </div>
   </div>

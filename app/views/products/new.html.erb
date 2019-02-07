@@ -50,7 +50,7 @@
         <div class="form__item">
           <label>商品の状態</label>
           <span>必須</span>
-          <%= f.select :condition, [["新品",0],["目立った傷や汚れなし",1]], prompt: "--" %>
+          <%= f.select :condition, ["新品","目立った傷や汚れなし"], prompt: "--" %>
           <% @product.errors.full_messages_for(:condition).each do |msg| %>
             <p><%= msg %></p>
           <% end %>
@@ -61,7 +61,7 @@
         <div class="form__item">
           <label>配送料の負担</label>
           <span>必須</span>
-          <%= f.select :derivery_way, [["送料込み（出品者負担）",0],["着払い（購入者負担）",1]], prompt: "--" %>
+          <%= f.select :derivery_way, ["送料込み（出品者負担）","着払い（購入者負担）"], prompt: "--" %>
            <% @product.errors.full_messages_for(:derivery_way).each do |msg| %>
             <p><%= msg %></p>
           <% end %>
@@ -72,7 +72,7 @@
         <div class="form__item">
           <label>配送元の地域</label>
           <span>必須</span>
-          <%= f.select :derivery_source, [["北海道",0],["沖縄",1]], prompt: "--" %>
+          <%= f.select :derivery_source, ["北海道","沖縄"], prompt: "--" %>
           <% @product.errors.full_messages_for(:derivery_source).each do |msg| %>
             <p><%= msg %></p>
           <% end %>
@@ -83,7 +83,7 @@
         <div class="form__item">
           <label>配送までの日数</label>
           <span>必須</span>
-          <%= f.select :derivery_day, [["1-2日で発送",0],["2-3日で発送",1],["4-7日で発送",2]], prompt: "--" %>
+          <%= f.select :derivery_day, ["1-2日で発送","2-3日で発送","4-7日で発送"], prompt: "--" %>
           <% @product.errors.full_messages_for(:derivery_day).each do |msg| %>
             <p><%= msg %></p>
           <% end %>
@@ -122,7 +122,7 @@
       <% end %>
           </div>
         </div>
-      <%= f.submit "出品する", class:"registration" , id: "product_registration"%>
+      <%= f.submit "出品する", class: "registration" , id: "product_registration"%>
       <% end %>
     </div>
   </div>

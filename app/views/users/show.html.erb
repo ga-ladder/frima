@@ -1,0 +1,36 @@
+<%= render "/layouts/module/navbar" %>
+<%= render "/layouts/module/bread-crumbs" %>
+<div class="main">
+
+<div class="mypage">
+  <%= render "/users/shared/user-menu" %>
+  <div class="mypage__content">
+    <%= render "/users/shared/user-header" %>
+
+    <div class="user-content">
+      <ul class="tabs">
+      <li class="active"><a href="#">お知らせ</a></li>
+      <li><a href="#">やることリスト</a></li>
+      </ul>
+      <ul class="content-items">
+        <%= render "/users/shared/user-content" %>
+      </ul>
+    </div>
+
+    <div class="user-content">
+      <ul class="tabs">
+      <li class="active"><a href="#">お知らせ</a></li>
+      <li><a href="#">やることリスト</a></li>
+      </ul>
+      <ul>
+        <%= render "/users/shared/user-no-content" %>
+     </ul>
+   </div>
+  </div>
+</div>
+
+</div>
+
+<%= render "/products/index/camera" %>
+
+<%= render "/layouts/module/footer" %>

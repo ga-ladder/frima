@@ -1,0 +1,14 @@
+<div class="bread-crumbs">
+  <ul>
+  <% ["メルカリ", "マイページ"].each do |i| %>
+    <li>
+      <% if ["メルカリ", "マイページ"].last == i %>
+        <b><%= i %></b>
+      <% else %>
+        <%= i %>
+        <i class="fas fa-greater-than"></i>
+      <% end %>
+    </li>
+  <% end %>
+  </ul>
+</div>
