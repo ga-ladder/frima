@@ -1,3 +1,13 @@
 // Place all the styles related to the regidents controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.resident{
+  .field{
+    max-width: 320px;
+    margin: 20px auto !important;
+    .option{
+      background: #ccc !important;
+    }
+  }
+}

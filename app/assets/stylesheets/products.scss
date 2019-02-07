@@ -79,7 +79,7 @@
       }
       &__heading{
         color:#ccc;
-        width:50%;
+        min-width:50%;
         float:left;
         margin-bottom:24px;
       }
@@ -105,6 +105,7 @@
       }
       &__price{
         display:flex;
+        min-width: 320px;
         white-space: nowrap;
         height:48px;
         align-items:center;
@@ -159,7 +160,14 @@
     text-align: right;
   }
 }
-
+.new_product{
+  .form__item{
+  }
+  select{
+    min-width: 320px;
+    max-width: 320px;
+  }
+}
 .show-item{
   background: rgb(245, 245, 245);
   overflow:hidden;

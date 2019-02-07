@@ -1,3 +1,36 @@
 // Place all the styles related to the customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.addLink{
+  font-weight: 1 !important;
+  width: 320px !important;
+  margin:40px auto 0 auto !important;
+  display: flex !important;
+  justify-content: center !important;
+  color:white;
+  align-items: center;
+  font-size: .8em !important;
+}
+
+.customer{
+  height:750px;
+  .field{
+    max-width: 320px;
+    margin: 20px auto !important;
+    select{
+      width:35% !important;
+    }
+    .date{
+      display:inline;
+    }
+  }
+  .form__item{
+    padding-top:0 !important;
+  }
+  .signup-card-list{
+    li{
+      display: inline-block !important;
+    }
+  }
+}
