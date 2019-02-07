@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_31_155129) do
+ActiveRecord::Schema.define(version: 2019_02_06_091539) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 2019_01_31_155129) do
     t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["parent_id"], name: "index_categories_on_parent_id"
+  end
+
+  create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "customer_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
   create_table "products", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -52,11 +61,32 @@ ActiveRecord::Schema.define(version: 2019_01_31_155129) do
     t.integer "derivery_day", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["bland_id"], name: "index_products_on_bland_id"
     t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "residents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "real_first_name", null: false
+    t.string "real_last_name", null: false
+    t.string "kana_first_name", null: false
+    t.string "kana_last_name", null: false
+    t.datetime "birthday"
+    t.integer "zip_code", null: false
+    t.integer "prefecture", null: false
+    t.string "city_name", null: false
+    t.string "house_number"
+    t.string "building_name"
+    t.integer "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_residents_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "nickname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -73,4 +103,6 @@ ActiveRecord::Schema.define(version: 2019_01_31_155129) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "products", "users"
+  add_foreign_key "residents", "users"
 end
