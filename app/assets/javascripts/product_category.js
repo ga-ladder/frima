@@ -38,9 +38,7 @@ $(function(){
         var categoryId = $(this)[0].value;
         nextCategory(categoryId).done(function(data){
         // sub category の追加
-        console.log(data)
           selectData = $(data).filter('#product_category_id')[0];
-          console.log(selectData)
           $("#category").append(selectData);
         })
       })

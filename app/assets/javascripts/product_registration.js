@@ -6,11 +6,9 @@ $(function(){
 
     /* -------------------------------------------------- */
     // paramsの編集
-    console.log(this)
       formData = new FormData($(this).get(0));
       formData.delete("product[images][]")
       for(item of fileCollection) formData.append("product[images][]",item);
-        form = formData
 
     // create action
       var url = $('#new_product').attr('action');
