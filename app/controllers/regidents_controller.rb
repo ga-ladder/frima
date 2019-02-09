@@ -1,2 +1,0 @@
-class RegidentsController < ApplicationController
-end

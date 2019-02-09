@@ -43,6 +43,6 @@ class ProductsController < ApplicationController
       :derivery_day,
       :price,
       images: []
-    )
+    ).merge(user_id: current_user.id)
   end
 end
