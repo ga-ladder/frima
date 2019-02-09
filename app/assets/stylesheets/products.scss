@@ -198,12 +198,25 @@
     &__images{
       max-width:300px;
       ul{
+        display: flex;
         font-size:0px;
         padding:0px;
         height:75px;
+        width:300px !important;
+        .slick-track{
+          width:300px !important;
+          display: unset;
+          position: initial;
+        }
+        .slick-current{
+          outline: none;
+          opacity:.8;
+        }
       }
       li{
-        display:inline;
+        flex-wrap: wrap;
+        width:75px !important;
+        height:75px !important;
         img{
           width:75px;
         }
@@ -214,8 +227,13 @@
     overflow: scroll;
     max-width: 300px;
     max-height: 300px;
+    display: inline-block;
+    white-space: nowrap;
+    &__item{
+      display: inline-block;
+    }
     img{
-      overflow: scroll;
+      object-fit: contain;
     }
   }
   .price{

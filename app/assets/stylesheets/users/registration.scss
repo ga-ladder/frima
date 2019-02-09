@@ -152,3 +152,12 @@
   margin:0 auto;
   padding:0 64px 40px 64px;
 }
+
+.header{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  img{
+    height:50px;
+  }
+}
