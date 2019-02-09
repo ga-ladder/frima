@@ -7,7 +7,9 @@
         <% if @product.images.attached? then %>
         <div class="slickImages">
           <% @product.images.each do |image| %>
-            <%= image_tag image, size:"300x300" %>
+            <div class="slickImages__item">
+              <%= image_tag image, size:"300x300" %>
+            </div>
           <% end %>
         </div>
         <ul>
@@ -25,7 +27,7 @@
     <div class="price">
       <b>￥<%= @product.price %></b>
       <span>(税込)</span>
-      送料込みやべ
+      送料込み
     </div>
     <button class="purchase">
       購入画面に進む
