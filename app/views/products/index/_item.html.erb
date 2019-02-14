@@ -1,6 +1,6 @@
 <div class="items-box">
 
-<section class="item-box" style="background-color:#fef;">
+<section class="item-box">
   <%= link_to item do %>
     <%= image_tag item.images.first, width: "213px", height: "213px" if item.images.attached? %>
     <div class="item-box__info">
@@ -9,7 +9,7 @@
         <div class="price"><%= "￥" + item.price.to_s %></div>
         <div class="icon">♡1</div>
       </div>
-      <div class="tax">税込</div>
+      <div class="tax">(税込)</div>
     </div>
   <% end %>
 </section>
