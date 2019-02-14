@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one :customer
   has_one :resident
-  has_many :products
+  has_many :product_users
+  has_many :products, through: :product_users
 end
