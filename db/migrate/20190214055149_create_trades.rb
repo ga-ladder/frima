@@ -1,6 +1,10 @@
 class CreateTrades < ActiveRecord::Migration[5.2]
   def change
     create_table :trades do |t|
+      t.references, :user
+      t.references, :product
+      t.integer, :points
+      t.references, :charge
 
       t.timestamps
     end
