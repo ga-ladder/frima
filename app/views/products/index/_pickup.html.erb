@@ -1,0 +1,10 @@
+<h3 class="main__last">
+  <%= link_to "全て 新着アイテム", "#" %>
+</h3>
+<div class="main__container">
+    <%= render partial: "/products/index/item", collection: @products  %>
+  <div class="main__next">
+    <%= link_to "全ての商品を見る", "/category/1" %>
+  </div>
+</div>
+

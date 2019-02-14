@@ -1,0 +1,18 @@
+.top-header {
+  background-image:url("../../top.png");
+  color:black;
+  background-size: cover;
+  display: none;
+  height: 290px;
+}
+@media (min-width: 768px){
+  .top-header {
+      display:block;
+  }
+}
+@media (min-width: 1068px){
+  .top-header {
+      display:block;
+      height: 390px;
+  }
+}

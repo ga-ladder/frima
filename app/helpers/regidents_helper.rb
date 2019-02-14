@@ -1,0 +1,2 @@
+module RegidentsHelper
+end

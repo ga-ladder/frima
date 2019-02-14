@@ -1,0 +1,27 @@
+footer {
+  padding:60px 0;
+  font-size:0.95rem;
+  background-color:#212121;
+  color:white;
+  nav{
+    margin: 0 auto;
+  }
+  ul {
+    width:255px;
+    float:left;
+    li {
+      list-style:none;
+      text-align:center;
+      margin: 16px 0 0;
+    }
+  }
+  .footer-icon{
+    width: 100vw;
+    text-align:center;
+  }
+}
+@media(min-width: 1068px){
+  footer nav {
+      width: 1020px;
+  }
+}

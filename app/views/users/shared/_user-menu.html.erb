@@ -1,0 +1,45 @@
+<div class="user-menu">
+  <ul>
+    <li>
+      <%= link_to "マイページ", user_path(current_user) %>
+    </li>
+    <li><a>お知らせ 99+</a></li>
+    <li><a>やることリスト</a></li>
+    <li><a>いいね！一覧</a></li>
+    <li>
+      <%= link_to "出品する","/products/new" %>
+    </li>
+    <li><a>出品した商品 - 出品中</a></li>
+    <li><a>出品した商品 - 取引中</a></li>
+    <li><a>出品した商品 - 売却済み</a></li>
+    <li><a>購入した商品 - 取引中</a></li>
+    <li><a>購入した商品 - 過去の取引</a></li>
+    <li><a>ニュース一覧</a></li>
+    <li><a>評価一覧</a></li>
+    <li><a>ガイド</a></li>
+    <li><a>お問い合わせ</a></li>
+  </ul>
+
+  <label name="title">売上-ポイント</label>
+  <ul>
+    <li><a>売上・振込申請</a></li>
+    <li><a>ポイント</a></li>
+  </ul>
+
+  <label name="title">設定</label>
+  <ul>
+    <li><a>プロフィール</a></li>
+    <li>
+      <%= link_to "住所変更", new_resident_path %>
+    </li>
+    <li>
+      <%= link_to "支払い方法", customer_path(@user.customer) %>
+    </li>
+    <li><a>メール/パスワード</a></li>
+    <li><a>本人情報</a></li>
+    <li><a>電話番号の確認</a></li>
+    <li>
+      <%= link_to "ログアウト", logout_users_path %>
+    </li>
+  </ul>
+</div>

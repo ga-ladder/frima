@@ -1,0 +1,20 @@
+<%= render "/layouts/module/navbar" %>
+<%= render "/layouts/module/bread-crumbs" %>
+<div class="main">
+
+<div class="mypage">
+  <%= render "/users/shared/user-menu" %>
+
+  <div class="new resident user-content">
+    <div class="registration-container">
+      <header>ログアウト</header>
+      <div class="form__container">
+        <div class="form__item">
+            <%= link_to "ログアウトする", destroy_user_session_path, method: :delete,  class: "registration addLink" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

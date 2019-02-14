@@ -1,0 +1,51 @@
+<%= render "/layouts/module/navbar" %>
+
+<div class="show-item">
+  <div class="item-container">
+    <div class="item-content">
+      <div class="item-content__images">
+        <% if @product.images.attached? then %>
+        <div class="slickImages">
+          <% @product.images.each do |image| %>
+            <div class="slickImages__item">
+              <%= image_tag image, size:"300x300" %>
+            </div>
+          <% end %>
+        </div>
+        <ul>
+          <% @product.images.each do |image| %>
+            <li>
+              <%= image_tag image %>
+            </li>
+          <% end %>
+        </ul>
+        <% end %>
+      </div>
+      <%= render "products/show/table", product: @product %>
+
+    </div>
+    <div class="price">
+      <b>￥<%= @product.price %></b>
+      <span>(税込)</span>
+      送料込み
+    </div>
+    <button class="purchase">
+      購入画面に進む
+    </button>
+    <p>
+      <%= @product.description %>
+    </p>
+    <div class="button-container">
+      <button>
+         ♡ いいね! 0
+      </button>
+      <button>
+        🏳不適切な商品の報告
+      </button>
+      <a href="https://www.mercari.com/jp/safe/description/" target="_blank">
+        <i>⬜︎</i>
+        <span>あんしん・あんぜんへの取り組み</span>
+      </a>
+    </div>
+  </div>
+</div>

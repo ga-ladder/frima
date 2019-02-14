@@ -1,0 +1,365 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@mixin listInput() {
+  width: 100%;
+  margin: 8px 0 0;
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+}
+@mixin form(){
+  .registration-container{
+    header{
+      padding: 32px 16px;
+      font-size: 22px;
+      line-height: 1.5;
+      text-align: center;
+      border-bottom: 2px solid #f5f5f5;
+    }
+    .registration{
+      display:block;
+      margin: 40px 0 0;
+      height:60px;
+      width:100%;
+      font-weight: 600;
+      font-size: 20px;
+      color: white;
+      background-color:#ea352d;
+      cursor:pointer;
+      &:focus{
+        outline: 0;
+      }
+    }
+    .form{
+      &__container{
+        width:700px;
+        margin: 0 auto;
+        padding:40px;
+        background: white;
+        border-top: 1px solid #f5f5f5;
+        .listInput{
+          @include listInput();
+        }
+        select{
+          @include listInput();
+        }
+        label{
+          margin:0px;
+          font-weight:600;
+        }
+        span{
+          margin: 0 0 0 8px;
+          padding: 2px 4px;
+          border-radius: 2px;
+          background-color: #ea352d;
+          color:white;
+          font-size: 12px;
+        }
+        textarea{
+          @include listInput();
+          height:auto;
+        }
+        p{
+          color:red;
+          margin:5px 0 0 0;
+        }
+      }
+      @media (max-width:720px) {
+        &__container{
+          width:100%;
+        }
+      }
+      &__item{
+        margin-top:24px;
+      }
+      &__heading{
+        color:#ccc;
+        min-width:50%;
+        float:left;
+        margin-bottom:24px;
+      }
+      &__detail{
+        width:100%;
+        display:flex;
+        margin-top:24px;
+      }
+      &__heading + &__item{
+        right:0;
+        width:100%;
+        padding:1px;
+      }
+      @media (max-width:480px) {
+        &__detail{
+          width:100%;
+          display:block;
+        }
+        &__heading + &__item{
+          right:0;
+          width:100%;
+        }
+      }
+      &__price{
+        display:flex;
+        min-width: 320px;
+        white-space: nowrap;
+        height:48px;
+        align-items:center;
+        border-bottom:2px #eee solid;
+        padding-bottom:24px;
+        .en{
+          display:flex;
+          align-items:center;
+          height:48px;
+          margin:0 10px 0 25%;
+        }
+        input{
+          @include listInput();
+          margin:0;
+          text-align:right;
+        }
+        &__commission{
+          @include listInput();
+          border: none;
+          margin: 0 0 2px 0;
+          text-align:right;
+          height:48px;
+        }
+        @media (max-width:480px) {
+          input, &__commission{width:50%;}
+          .en{right:50%;}
+        }
+      }
+    }
+  }
+}
+.main{
+  @include form();
+  background: #f5f5f5;
+  padding:40px 0;
+  .pickup{
+    text-align: center;
+  }
+  &__last{
+    text-align: center;
+    margin: 24px 8px;
+  }
+  &__container{
+    display: flex;
+    margin: 0 auto;
+    width: 940px;
+    flex-wrap: wrap;
+  }
+  &__next{
+    width: 100%;
+    padding:20px 0 30px;
+    text-align: right;
+  }
+}
+.new_product{
+  .form__item{
+  }
+  select{
+    min-width: 320px;
+    max-width: 320px;
+  }
+}
+.show-item{
+  background: rgb(245, 245, 245);
+  overflow:hidden;
+  .item-container{
+    margin: 40px auto 0;
+    padding: 24px 16px 55px 16px;
+    background-color:white;
+  }
+  @media (min-width: 768px){
+    .item-container {
+        padding: 24px 40px 40px;
+        width:700px;
+    }
+  }
+  .item-content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    table{
+      border-collapse: collapse;
+      height: 375px;
+      max-width: 300px;
+    }
+    table th, table td {
+      border: solid 1px black;
+      font-size: .8em;
+    }
+    &__images{
+      max-width:300px;
+      ul{
+        display: flex;
+        font-size:0px;
+        padding:0px;
+        height:75px;
+        width:300px !important;
+        .slick-track{
+          width:300px !important;
+          display: unset;
+          position: initial;
+        }
+        .slick-current{
+          outline: none;
+          opacity:.8;
+        }
+      }
+      li{
+        flex-wrap: wrap;
+        width:75px !important;
+        height:75px !important;
+        img{
+          width:75px;
+        }
+      }
+    }
+  }
+  .slickImages{
+    overflow: scroll;
+    max-width: 300px;
+    max-height: 300px;
+    display: inline-block;
+    white-space: nowrap;
+    &__item{
+      display: inline-block;
+    }
+    img{
+      object-fit: contain;
+    }
+  }
+  .price{
+    margin: 24px 0 0;
+    text-align: center;
+    b{
+      font-size: 50px;
+    }
+    span{
+      font-size: 12px;
+    }
+  }
+  .purchase{
+    display:block;
+    height:60px;
+    width:100%;
+    font-weight: 600;
+    font-size: 20px;
+    color: white;
+    background-color:#ea352d;
+    cursor:pointer;
+    &:focus{
+      outline: 0;
+    }
+  }
+  p{
+    white-space: pre-wrap;
+  }
+  .button-container{
+    display:flex;
+    justify-content:space-between;
+    width:100%;
+    button{
+      color: #333;
+      border: 1px solid #f5f5f5;
+      border-radius:40px;
+      background: #f5f5f5;
+      padding:3px 10px;
+      cursor:pointer;
+    }
+    a{
+      display:flex;
+      align-items:center;
+    }
+  }
+}
+
+
+
+.drop{
+  height: 200px;
+  display: flex;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  background: rgba(0,0,0,.05);
+  &__dropped{
+    width: 25%;
+  }
+  &__list{
+    top:10px;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    margin:0;
+    label{
+      display: block;
+      user-select: none;
+      color:#007bff;
+      border:none;
+      background:inherit;
+      &:active{
+        color:#69c;
+      }
+    }
+  }
+  &__image{
+    width: 100%;
+    height: auto;
+    max-height: 155px;
+    object-fit: contain;
+    float: left;
+  }
+  &__zone{
+    flex: 1;
+    background: rgba(0,0,0,.1);
+    border: 4px rgba(0,0,0,.2) dashed;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    p{
+      width:100%;
+      flex-grow: 0;
+      font-size:.8rem;
+    }
+  }
+}
+.drop__dropped + .drop__dropped + .drop__dropped + .drop__dropped + .drop__zone {
+  display: none;
+}
+.hidden{
+  display: none;
+}
+
+.modal{
+  position: fixed;
+  top:0;
+  background: rgba(0,0,0,.65);
+  height:100vh;
+  width:100vw;
+  &__container{
+    margin:40px;
+    padding:0 40px 40px 40px;
+    background:white;
+  }
+  &__body{
+    margin-top:20px;
+    padding-top:20px;
+  }
+  a{
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+}

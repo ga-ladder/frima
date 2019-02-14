@@ -1,0 +1,49 @@
+<div class="show-item">
+  <%= render '/layouts/registration-header' %>
+  <div class="new">
+    <div class="registration-container">
+      <header>会員情報入力</header>
+      <div class="form__container">
+        <div class="form__item">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
+
+            <div class="field form__name">
+              <%= f.label "ニックネーム" %>
+              <span>必須</span>
+              <%= f.text_field :nickname, autofocus: true, placeholder:"例）メルカリ太郎" %>
+            </div>
+
+            <div class="field form__email">
+              <%= f.label "メールアドレス" %>
+              <span>必須</span>
+              <%= f.email_field :email, placeholder:"PC-携帯どちらでも可" %>
+            </div>
+
+            <div class="field form__password">
+              <%= f.label "パスワード" %>
+              <span>必須</span>
+              <%= f.password_field :password, autocomplete: "new-password",placeholder:@minimum_password_length.to_s + "文字以上" %>
+            </div>
+
+            <div class="field form__password-confirmation">
+              <%= f.label "パスワード(確認)" %>
+              <span>必須</span>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:@minimum_password_length.to_s + "文字以上" %>
+            </div>
+
+            <div class="form__reCaptcha">
+              チェック
+            </div>
+
+            <div class="field actions">
+              <%= f.submit "Sign up", class:"registration" %>
+            </div>
+          <% end %>
+
+          <%= render "users/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

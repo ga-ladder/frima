@@ -1,0 +1,29 @@
+.item-box{
+  display:inline-block;
+  width:213px;
+  margin:0 0 0 20px;
+  background: white;
+  a{
+    color:black;
+  }
+  &__info{
+    padding: 16px;
+    h3{
+      width:100%;
+      max-height:56px;
+      overflow:hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .price{
+      float:left;
+      width:5px;
+    }
+    .icon{
+      float:right;
+    }
+    .tax{
+      font-size:0.4rem;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<%= render "/layouts/module/navbar" %>
+<%= render "/layouts/module/bread-crumbs" %>
+<div class="main">
+
+<div class="mypage">
+  <%= render "/users/shared/user-menu" %>
+
+  <div class="new resident user-content">
+    <div class="registration-container">
+      <header>支払い情報</header>
+      <div class="form__container">
+        <div class="form__item">
+          <b>クレジットカード一覧</b>
+          <% @cards.each do |card| %>
+          <div>
+            <p><%= "default" if @customer.default_card == card.id %></p>
+            brand: <%= card.brand %>
+                   <%= render '/customers/card-brand', brand: card.brand %><br>
+            <%= card.exp_month %> / <%= card.exp_year %> <br>
+            **** **** **** <%= card.last4 %>
+          </div>
+          <% end %>
+
+          <%= link_to "クレジットカードを追加する", new_customer_path,class:"registration addLink" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

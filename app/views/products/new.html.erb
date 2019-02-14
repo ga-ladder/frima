@@ -1,0 +1,130 @@
+<div class="main">
+  <div class="registration-container">
+    <div class="form__container">
+      <%= form_for @product do |f| %>
+      <header>商品の情報を入力</header>
+      <div class="form__item">
+        <label>出品画像</label>
+        <span>必須</span>
+        <div class="drop" id="drop">
+          <label class="drop__zone" for="product_images" id="dropbox">
+            ドラッグアンドドロップ
+            <br />
+            またはクリックしてファイルをアップロード
+            <%= f.file_field :images, multiple:true, accept:"image/*", class: "hidden" %>
+          </label>
+        </div>
+        <% @product.errors.full_messages_for(:images).each do |msg| %>
+          <p><%= msg %></p>
+        <% end %>
+      </div>
+      <div class="form__item">
+        <label>商品名</label>
+        <span>必須</span>
+        <%= f.text_field :name, placeholder:"商品名(必須40文字まで)", class: "listInput" %>
+        <% @product.errors.full_messages_for(:name).each do |msg| %>
+          <p><%= msg %></p>
+        <% end %>
+      </div>
+      <div class="form__item">
+        <label>商品の説明</label>
+        <span>必須</span>
+        <%= f.text_area :description, rows:6, placeholder:"商品の説明" %>
+        <% @product.errors.full_messages_for(:description).each do |msg| %>
+          <p><%= msg %></p>
+        <% end %>
+      </div>
+      <div class="form__detail">
+        <div class="form__heading">商品の詳細</div>
+        <div class="form__item" id="category">
+          <label>カテゴリー</label>
+          <span>必須</span>
+          <%= select :root, :category, @categories.map{|t| [t.category, t.id]}, prompt: "--" %>
+          <% @product.errors.full_messages_for(:category_id).each do |msg| %>
+            <p><%= msg %></p>
+          <% end %>
+        </div>
+      </div>
+      <div class="form__detail">
+        <div class="form__heading"></div>
+        <div class="form__item">
+          <label>商品の状態</label>
+          <span>必須</span>
+          <%= f.select :condition, ["新品","目立った傷や汚れなし"], prompt: "--" %>
+          <% @product.errors.full_messages_for(:condition).each do |msg| %>
+            <p><%= msg %></p>
+          <% end %>
+        </div>
+      </div>
+      <div class="form__detail">
+        <div class="form__heading">配送について</div>
+        <div class="form__item">
+          <label>配送料の負担</label>
+          <span>必須</span>
+          <%= f.select :derivery_way, ["送料込み（出品者負担）","着払い（購入者負担）"], prompt: "--" %>
+           <% @product.errors.full_messages_for(:derivery_way).each do |msg| %>
+            <p><%= msg %></p>
+          <% end %>
+       </div>
+      </div>
+      <div class="form__detail">
+        <div class="form__heading"></div>
+        <div class="form__item">
+          <label>配送元の地域</label>
+          <span>必須</span>
+          <%= f.select :derivery_source, ["北海道","沖縄"], prompt: "--" %>
+          <% @product.errors.full_messages_for(:derivery_source).each do |msg| %>
+            <p><%= msg %></p>
+          <% end %>
+        </div>
+      </div>
+      <div class="form__detail">
+        <div class="form__heading"></div>
+        <div class="form__item">
+          <label>配送までの日数</label>
+          <span>必須</span>
+          <%= f.select :derivery_day, ["1-2日で発送","2-3日で発送","4-7日で発送"], prompt: "--" %>
+          <% @product.errors.full_messages_for(:derivery_day).each do |msg| %>
+            <p><%= msg %></p>
+          <% end %>
+        </div>
+      </div>
+      <div class="form__detail">
+        <div class="form__heading">販売価格(300~9,999,999)</div>
+        <div class="form__item form__price">
+          <label>価格</label>
+          <span>必須</span>
+          <label class="en">¥</label>
+          <%= f.text_field :price, placeholder:"300~", autocomplete:"off" %>
+        </div>
+      </div>
+      <div class="form__detail">
+        <div class="form__heading"></div>
+        <div class="form__item form__price">
+          <label>販売手数料(10%)</label>
+          <label class="en">¥</label>
+          <div class="form__price__commission"></div>
+        </div>
+      </div>
+      <div class="form__detail">
+        <div class="form__heading"></div>
+        <div class="form__item form__price">
+          <label>販売利益</label>
+          <label class="en">¥</label>
+          <div class="form__price__commission"></div>
+        </div>
+      </div>
+        <div class="form__detail" style="margin:0">
+          <div class="form__heading"></div>
+          <div class="form__item" style="margin:0;">
+      <% @product.errors.full_messages_for(:price).each do |msg| %>
+            <p><%= msg %></p>
+      <% end %>
+          </div>
+        </div>
+      <%= f.submit "出品する", class: "registration" , id: "product_registration"%>
+      <% end %>
+    </div>
+  </div>
+  <div id="complete"></div>
+</div>

@@ -1,0 +1,3 @@
+<%= @product.errors.full_messages_for(locals[:element]).each do |msg| %>
+  <p><%= msg %></p>
+<% end %>
