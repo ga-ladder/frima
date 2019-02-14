@@ -1,12 +1,12 @@
 <div class="items-box">
 
 <section class="item-box" style="background-color:#fef;">
-  <%= link_to "/products/1" do %>
-    <img src="https://static-mercari-jp-imgtr2.akamaized.net/thumb/photos/m91179566795_1.jpg?1545027032" width="213px" height="213px">
+  <%= link_to item do %>
+    <%= image_tag item.images.first, width: "213px", height: "213px" if item.images.attached? %>
     <div class="item-box__info">
-      <h3>item name item Name item Name item Name item Name </h3>
+      <h3><%= item.name %></h3>
       <div class="clearfix">
-        <div class="price">$2,000</div>
+        <div class="price"><%= "￥" + item.price.to_s %></div>
         <div class="icon">♡1</div>
       </div>
       <div class="tax">税込</div>

@@ -1,13 +1,8 @@
-<h2 class="pickup">
-  ピックアップカテゴリー
-</h2>
 <h3 class="main__last">
-  <a href="#">レディース 新着アイテム</a>
+  <%= link_to "全て 新着アイテム", "#" %>
 </h3>
 <div class="main__container">
-  <% (0..3).each do |i| %>
-    <%= render "/products/index/item" %>
-  <% end %>
+    <%= render partial: "/products/index/item", collection: @products  %>
   <div class="main__next">
     <%= link_to "全ての商品を見る", "/category/1" %>
   </div>
