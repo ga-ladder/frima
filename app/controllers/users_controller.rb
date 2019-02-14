@@ -1,18 +1,19 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   include SetUser
   before_action :user_customer, only: [:show]
 
-  def show
-  end
+  def show; end
 
-  def destroy
-  end
+  def destroy; end
 
   def sign_up_way
     @user ||= User.new
   end
 
   protected
+
   def user_customer
     if current_user.customer
       customer = current_user.customer

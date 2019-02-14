@@ -38,8 +38,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  def phone
-  end
+  def phone; end
 
   def resident
     @resident = Resident.new
@@ -50,7 +49,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @resident.save
       redirect_to customer_registration_url
     else
-      render :action => "resident"
+      render action: "resident"
     end
   end
 
@@ -72,29 +71,28 @@ class Users::RegistrationsController < Devise::RegistrationsController
       customer.cards.create(card: params['payjpToken'])
     rescue Payjp::InvalidRequestError => e
       logger.error e
-      redirect_to :action => "customer", alert: "カード情報が正しくないか，すでに登録されています"
+      redirect_to action: "customer", alert: "カード情報が正しくないか，すでに登録されています"
       return
     end
     redirect_to complete_url
   end
 
-  def complete
-  end
+  def complete; end
 
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute, :nickname])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[attribute nickname])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:attribute, :nickname])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[attribute nickname])
   end
 
   # The path used after sign up.
-  def after_sign_up_path_for(resource)
+  def after_sign_up_path_for(_resource)
     phone_registration_url
   end
 
@@ -115,6 +113,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :city_name,
       :house_number,
       :building_name,
-      :phone_number).merge(user_id: current_user.id)
+      :phone_number
+    ).merge(user_id: current_user.id)
   end
 end

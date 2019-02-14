@@ -2,9 +2,9 @@
 
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-        sessions: 'users/sessions',
-        registrations: 'users/registrations'
-      }
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
   devise_scope :user do
     get 'phone_registration' => 'users/registrations#phone'
     post 'resident_registration' => 'users/registrations#resident_registration'

@@ -39,9 +39,9 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "pry-doc"
-  gem 'rb-readline'
   gem "pry-rails"
   gem "pry-stack_explorer"
+  gem 'rb-readline'
 
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -67,6 +67,5 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'devise'
 
 # pay jp
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'payjp'
-gem 'dotenv-rails', :require => 'dotenv/rails-now'
-

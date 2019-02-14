@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 class ResidentsController < ApplicationController
   include SetUser
   before_action :authenticate_user!
   before_action :set_resident
 
-  def new
-  end
+  def new; end
 
   def create
     @resident = Resident.new(resident_params)
@@ -25,7 +26,8 @@ class ResidentsController < ApplicationController
     end
   end
 
-protected
+  protected
+
   def resident_params
     params.require(:resident).permit(
       :real_first_name,
@@ -38,15 +40,12 @@ protected
       :city_name,
       :house_number,
       :building_name,
-      :phone_number).merge(user_id: current_user.id)
+      :phone_number
+    ).merge(user_id: current_user.id)
   end
 
   def set_resident
-    if @user.resident
-      @resident = @user.resident
-    else
-      @resident = Resident.new
-    end
+    @resident = @user.resident || Resident.new
     @resident
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CustomersController < ApplicationController
   include SetUser
   before_action :authenticate_user!
@@ -24,11 +26,12 @@ class CustomersController < ApplicationController
       redirect_to new_customer_url, alert: "カード情報が正しくないか，すでに登録されています"
       return
     end
-    redirect_to customer_path(current_user.customer), notice:"カードが登録されました"
+    redirect_to customer_path(current_user.customer), notice: "カードが登録されました"
   end
 
-private
-  #顧客情報を取得 or 登録
+  private
+
+  # 顧客情報を取得 or 登録
   def user_customer
     if current_user.customer
       customer = current_user.customer

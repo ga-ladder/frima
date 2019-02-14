@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Resident < ApplicationRecord
   belongs_to :user
 
@@ -16,5 +18,5 @@ class Resident < ApplicationRecord
   { with: /\A[ｱ-ﾝア-ン]+\z/,
     message: "は，カタカナのみが使用できます" }
 
-  enum derivery_source: ["北海道", "沖縄"]
+  enum derivery_source: %w[北海道 沖縄]
 end

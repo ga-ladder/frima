@@ -7,9 +7,9 @@ class Product < ApplicationRecord
   has_many :product_users
   has_many :users, through: :product_users
 
-  enum condition: ["新品", "目立った傷や汚れなし"]
+  enum condition: %w[新品 目立った傷や汚れなし]
   enum derivery_way: ["送料込み（出品者負担）", "着払い（購入者負担）"]
-  enum derivery_source: ["北海道", "沖縄"]
+  enum derivery_source: %w[北海道 沖縄]
   enum derivery_day: ["1-2日で発送", "2-3日で発送", "4-7日で発送"]
 
   validates :name,

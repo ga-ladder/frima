@@ -287,5 +287,5 @@ Devise.setup do |config|
   # ActiveSupport.on_load(:devise_failure_app) do
   #   include Turbolinks::Controller
   # end
-  config.sign_out_via = [:get, :delete]
+  config.sign_out_via = %i[get delete]
 end
