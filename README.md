@@ -30,6 +30,7 @@ has_many :sales
 
 has_many_attached :images
 
+
 ### 中間テーブル
 
 has_many :product_users
@@ -120,6 +121,8 @@ has_many :product_users
 
 has_many :products, through: :product_users
 
+has_many :trades
+
 ## profiles table
 | culumnName | type | option|
 ----|----|----
@@ -161,13 +164,29 @@ belongs_to :user
 ## product_users table(中間テーブル)
 | columnName | type | option|
 ----|----|----
-|user_id|references|index :true|
-|product_id|references|index :true|
+|user_id|references||
+|product_id|references||
 
 ### association
 
 belongs_to :user
 
+belongs_to :product
+
+-------
+
+## trades table
+| columnName | type | option|
+----|----|----
+|status|integer||
+|user|references||
+|product|references||
+|points|integer||
+|charge|references|payjp|
+
+### association
+
+belongs_to :user
 belongs_to :product
 
 ## likes
@@ -212,19 +231,6 @@ status(顔文字の部分)
 ### association
 
 belongs_to :user
-
-belongs_to :product
-
-## sales table
-| culumnName | type | option|
-----|----|----
-|product_id|references|index:true|
-|vendee_id|references||
-|vendor_id|references||
-|status|integer|pay or repayment|
-|charge_id|string|payjp請求id|
-
-### association
 
 belongs_to :product
 
