@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_one :resident
   has_many :product_users
   has_many :products, through: :product_users
+
+  validates :nickname, presence: true
 end
