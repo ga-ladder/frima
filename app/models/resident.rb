@@ -18,5 +18,7 @@ class Resident < ApplicationRecord
   { with: /\A[ｱ-ﾝア-ン]+\z/,
     message: "は，カタカナのみが使用できます" }
 
-  enum derivery_source: %w[北海道 沖縄]
+  enum derivery_source: %w[北海道 沖縄], _suffix: true
+  enum prefecture: %w[北海道 沖縄], _prefix: :derivery_sources
 end
+

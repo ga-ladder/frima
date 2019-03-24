@@ -6,6 +6,7 @@ class Product < ApplicationRecord
   belongs_to :user
   has_many :product_users
   has_many :users, through: :product_users
+  has_one :trade
 
   enum condition: %w[新品 目立った傷や汚れなし]
   enum derivery_way: ["送料込み（出品者負担）", "着払い（購入者負担）"]

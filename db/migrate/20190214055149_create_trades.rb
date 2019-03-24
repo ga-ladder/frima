@@ -3,8 +3,7 @@ class CreateTrades < ActiveRecord::Migration[5.2]
     create_table :trades do |t|
       t.references :user
       t.references :product
-      t.integer :points
-      t.references :charge
+      t.string :charge_id
 
       t.timestamps
     end

@@ -1,3 +1,33 @@
 // Place all the styles related to the trades controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.trade{
+  .field{
+    max-width: 320px;
+    margin: 20px auto !important;
+    .option{
+      background: #ccc !important;
+    }
+  }
+  &__image{
+    height:200px;
+    width: 200px;
+  }
+  &__name{
+    text-align: center;
+    font-size: 1.5rem;
+    font-style: bold;
+  }
+  &__price{
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  &__tax{
+    font-size:.5em;
+    font-weight: 10;
+  }
+  &__submit-forbidden{
+    cursor: not-allowed !important;
+  }
+}

@@ -8,6 +8,10 @@
   &__top{
     h1{
       float:left;
+      a, a:visited, a:hover {
+        color:black;
+        text-decoration: none;
+      }
     }
     form{
       float:right;

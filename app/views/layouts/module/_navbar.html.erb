@@ -1,6 +1,6 @@
 <nav class="nav-bar">
   <div class="nav-bar__top">
-    <h1>メルカリ</h1>
+    <h1><%= link_to "メルカリ", root_path %></h1>
     <form>
       <input class="search-bar" placeholder="キーワードから探す">
       <button><i class="fas fa-search"></i></button>
@@ -8,18 +8,9 @@
   </div>
   <div class="nav-bar__below">
     <ul class="left-bar">
-      <li>
-        <a>
-          カテゴリーから探す
-        </a>
-      </li>
-      <li>
-        <a>
-          ブランドから探す
-        </a>
-      </li>
+      <li id="searchCategory">カテゴリーから探す</li>
+      <li id="searchBrand">ブランドから探す</li>
     </ul>
-
     <%= render "/layouts/module/nav-right-bar" %>
   </div>
 </nav>

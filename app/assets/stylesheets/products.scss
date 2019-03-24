@@ -197,6 +197,7 @@
     }
     &__images{
       max-width:300px;
+      max-height:397px;
       ul{
         display: flex;
         font-size:0px;
@@ -258,6 +259,10 @@
     &:focus{
       outline: 0;
     }
+  }
+  .ban{
+    cursor: not-allowed;
+    pointer-events: none;
   }
   p{
     white-space: pre-wrap;
@@ -361,5 +366,26 @@
     display: block;
     text-align: center;
     width: 100%;
+  }
+}
+
+
+.sold{
+  position: absolute;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  border-top: 60px solid #ea352d;
+  border-right: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+  border-left: 60px solid #ea352d;
+  span{
+    position: absolute;
+    left: -60px;
+    top: -45px;
+    display: block;
+    transform: rotate(-45deg);
+    font-size: 2rem;
+    color: white;
   }
 }

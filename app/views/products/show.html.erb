@@ -5,6 +5,7 @@
     <div class="item-content">
       <div class="item-content__images">
         <% if @product.images.attached? then %>
+        <%= render "/products/shared/trade", item: @product %>
         <div class="slickImages">
           <% @product.images.each do |image| %>
             <div class="slickImages__item">
@@ -29,9 +30,19 @@
       <span>(税込)</span>
       送料込み
     </div>
-    <button class="purchase">
-      購入画面に進む
-    </button>
+    <% if @product.trade %>
+      <%= link_to new_product_trade_url(@product),class: "ban" do %>
+          <button class="purchase">
+            購入画面に進む
+          </button>
+      <% end %>
+    <% else %>
+      <%= link_to new_product_trade_url(@product) do %>
+          <button class="purchase">
+            購入画面に進む
+          </button>
+      <% end %>
+    <% end %>
     <p>
       <%= @product.description %>
     </p>

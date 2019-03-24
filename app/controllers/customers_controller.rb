@@ -9,7 +9,6 @@ class CustomersController < ApplicationController
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     @customer = Payjp::Customer.retrieve(user_customer.customer_id)
     @cards = @customer.cards.data
-    puts @customer
   end
 
   def new; end

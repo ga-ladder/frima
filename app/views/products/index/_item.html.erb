@@ -2,6 +2,7 @@
 
 <section class="item-box">
   <%= link_to item do %>
+    <%= render "/products/shared/trade", item: item %>
     <%= image_tag item.images.first, width: "213px", height: "213px" if item.images.attached? %>
     <div class="item-box__info">
       <h3><%= item.name %></h3>

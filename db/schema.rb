@@ -97,11 +97,9 @@ ActiveRecord::Schema.define(version: 2019_02_14_055149) do
   create_table "trades", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "product_id"
-    t.integer "points"
-    t.bigint "charge_id"
+    t.string "charge_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["charge_id"], name: "index_trades_on_charge_id"
     t.index ["product_id"], name: "index_trades_on_product_id"
     t.index ["user_id"], name: "index_trades_on_user_id"
   end
