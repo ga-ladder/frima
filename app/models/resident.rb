@@ -21,4 +21,3 @@ class Resident < ApplicationRecord
   enum derivery_source: %w[北海道 沖縄], _suffix: true
   enum prefecture: %w[北海道 沖縄], _prefix: :derivery_sources
 end
-
