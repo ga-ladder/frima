@@ -1,0 +1,74 @@
+<div class="main">
+
+
+  <div class="new trade">
+    <div class="registration-container">
+      <header>購入を確定しますか？</header>
+      <div class="form__container">
+        <div class="form__item">
+          <div class="field trade__image">
+            <%= image_tag @product.images.first, width:'200px', height:'200px' %>
+          </div>
+          <div class="field trade__name">
+            <%= @product.name %>
+          </div>
+          <div class="field trade__price">
+            <b>¥ <%= @product.price %></b>
+            <label class="trade__tax"> 送料込み</label>
+          </div>
+          <%= form_with(url: "/products/#{@product.id}/trades/", action: :post) do |f| %>
+
+            <div class="field">
+              <%= f.label "売上金を使う" %>
+              <%= "売上金: " +"￥0" %>
+            </div>
+
+            <div class="field">
+              <h1>支払い金額 ￥<%= @product.price %> </h1>
+            </div>
+            <div class="field actions">
+              <% if current_user.resident && @default_card %>
+                <%= f.submit "購入する", class:"registration" %>
+              <% else %>
+                <%= f.submit "購入する", class:"registration trade__submit-forbidden", disabled: true %>
+              <% end %>
+            </div>
+            <div class="field">
+              <b>配送先</b>
+              <% if current_user.resident then %>
+                <div>〒 <%= current_user.resident.zip_code %></div>
+                <div>
+                  <%= current_user.resident.prefecture %>
+                  <%= current_user.resident.city_name %>
+                  <%= current_user.resident.house_number %>
+                  <%= current_user.resident.building_name %>
+                </div>
+              <% else %>
+                <div> ---------- </div>
+              <% end %>
+              <%= link_to "変更する >", new_resident_path %>
+            </div>
+
+            <div class="field">
+              <b>支払い方法</b>
+              <% if @default_card then %>
+                <div>
+                  brand: <%= @card.brand %>
+                         <%= render '/customers/card-brand', brand: @card.brand %><br>
+                  期限: <%= @card.exp_month %> / <%= @card.exp_year %> <br>
+                  **** **** **** <%= @card.last4 %>
+                </div>
+                <%= link_to "変更する >", customer_path(User.find(current_user.id).customer) %>
+              <% else %>
+                <div>/</div>
+                <%= link_to "変更する >", new_customer_path %>
+              <% end %>
+            </div>
+
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
