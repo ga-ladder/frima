@@ -9,7 +9,7 @@ RSpec.describe User do
       it { is_expected.to be_valid }
     end
   end
-  describe 'create user' do
+  describe 'does not create user' do
     let(:user) { User.new(params)}
     let(:params) { { email: email, password: password } }
     # subject { user.errors.messages[param][0] }
