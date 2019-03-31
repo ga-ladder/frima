@@ -37,6 +37,23 @@ class ProductsController < ApplicationController
     @categories = Category.root_set
   end
 
+  def update
+    @categories = Category.root_set
+    @product = Product.find(params[:id])
+    if params[:product][:images]
+      if @product.update(product_params)
+        render :create
+      else # update できないとき
+        @product.images.purge if @product.images.attached?
+        render :edit
+      end
+    else # update できないとき
+      @product.valid?
+      @product.errors.add(:images, "Images can't be blank")
+      render :edit
+    end
+  end
+
   protected
 
   def product_params

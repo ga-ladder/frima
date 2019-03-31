@@ -39,7 +39,9 @@
         <div class="form__item" id="category">
           <label>カテゴリー</label>
           <span>必須</span>
-          <%= select :root, :category, @categories.map{|t| [t.category, t.id]}, prompt: "--" %>
+          <%= select :root, :category, @categories.map{|t| [t.category, t.id]}, prompt: grand_parent(@product.category).category %>
+          <%= select :middle, :category, Category.where(parent_id: grand_parent(@product.category).id).map{|t| [t.category, t.id]}, prompt: parent(@product.category).category %>
+          <%= select :product, :category_id, Category.where(parent_id: parent(@product.category).id).map{|t| [t.category, t.id]}, prompt: @product.category.category %>
           <% @product.errors.full_messages_for(:category_id).each do |msg| %>
             <p><%= msg %></p>
           <% end %>

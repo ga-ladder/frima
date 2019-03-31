@@ -14,6 +14,7 @@ $(function(){
 
   /* ------------------------------------------- */
     var selectData;
+    subOnChange(); // edit の初期値を変更する場合の呼び出し
     $("#root_category").on("change", function(){
     // middle / subcategory の除去
       $("#middle_category").remove();
