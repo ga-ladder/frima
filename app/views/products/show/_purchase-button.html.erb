@@ -1,0 +1,17 @@
+<% if product.user == current_user %>
+  <%= link_to "編集する", edit_product_url(product) %>
+<% else %>
+  <% if product.trade %>
+    <%= link_to new_product_trade_url(product),class: "ban" do %>
+      <button class="purchase">
+        購入画面に進む
+      </button>
+    <% end %>
+  <% else %>
+    <%= link_to new_product_trade_url(product) do %>
+      <button class="purchase">
+        購入画面に進む
+      </button>
+    <% end %>
+  <% end %>
+<% end %>

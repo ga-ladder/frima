@@ -30,19 +30,7 @@
       <span>(税込)</span>
       送料込み
     </div>
-    <% if @product.trade %>
-      <%= link_to new_product_trade_url(@product),class: "ban" do %>
-          <button class="purchase">
-            購入画面に進む
-          </button>
-      <% end %>
-    <% else %>
-      <%= link_to new_product_trade_url(@product) do %>
-          <button class="purchase">
-            購入画面に進む
-          </button>
-      <% end %>
-    <% end %>
+    <%= render "products/show/purchase-button", product: @product %>
     <p>
       <%= @product.description %>
     </p>
