@@ -32,6 +32,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+    @product = Product.find(params[:id])
+    @categories = Category.root_set
+  end
+
   protected
 
   def product_params
