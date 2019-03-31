@@ -1,5 +1,9 @@
 <% if product.user == current_user %>
-  <%= link_to "編集する", edit_product_url(product) %>
+  <%= link_to  edit_product_url(product) do %>
+    <button class="purchase">
+      編集する
+    </button>
+  <% end %>
 <% else %>
   <% if product.trade %>
     <%= link_to new_product_trade_url(product),class: "ban" do %>
